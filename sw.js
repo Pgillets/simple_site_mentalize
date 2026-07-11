@@ -16,7 +16,7 @@
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v1";
+const VERSAO = "v2";
 const CACHE = `shell-${VERSAO}`;
 
 // As 5 páginas do site — usadas também pelo fallback de navegação offline
@@ -32,10 +32,12 @@ const PRECACHE = [
   "./css/base.css",
   "./css/componentes.css",
   "./css/negocio.css",
+  "./css/pagina-404.css",
   "./js/tema-boot.js",
   "./js/tema.js",
   "./js/site.js",
   "./js/sw-registro.js",
+  "./js/pagina-404.js",
   "./js/componentes/cabecalho-site.js",
   "./assets/favicon.svg",
   "./assets/logo-preto.png",
