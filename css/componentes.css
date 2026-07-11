@@ -1,0 +1,371 @@
+/*
+ * componentes.css — cabeçalho, navegação, botões, selos, tabelas e demais
+ * peças reutilizadas pelas 4 páginas do site.
+ */
+
+/* ===== Cabeçalho e navegação ===== */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .topo {
+    background: color-mix(in srgb, var(--cor-fundo) 72%, transparent);
+    backdrop-filter: blur(10px) saturate(1.4);
+  }
+}
+
+.topo-conteudo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  max-width: var(--largura-conteudo);
+  margin-inline: auto;
+  padding: 0.55rem 1.25rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.55ch;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--cor-texto);
+  white-space: nowrap;
+}
+
+/* Logotipo "mentalize": arte preta sobre transparente. No tema escuro,
+   invertemos para branca — o wordmark é preto puro, então invert() dá branco
+   limpo sem tingir as bordas. Espelha a lógica de tema de tokens.css. */
+.marca-logo {
+  height: 1.5rem;
+  width: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .marca-logo {
+    filter: invert(1);
+  }
+}
+
+:root[data-tema="escuro"] .marca-logo {
+  filter: invert(1);
+}
+
+.topo nav {
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1 1 auto;
+}
+
+.topo nav::-webkit-scrollbar {
+  display: none;
+}
+
+.topo nav a {
+  padding: 0.38rem 0.72rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: background var(--duracao), color var(--duracao);
+}
+
+.topo nav a:hover {
+  color: var(--cor-texto);
+  background: var(--cor-superficie-2);
+}
+
+/* Estado ativo por atributo ARIA: acessibilidade e estilo com um seletor só. */
+.topo nav a[aria-current="page"] {
+  color: var(--cor-sobre-destaque);
+  background: var(--cor-destaque);
+}
+
+#alternar-tema {
+  margin-left: auto;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-superficie);
+  border-radius: 999px;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: border-color var(--duracao);
+}
+
+#alternar-tema:hover {
+  border-color: var(--cor-destaque);
+}
+
+@media (max-width: 46rem) {
+  .topo nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+/* Abaixo disso, os 5 itens de nav (Início/Serviços/Sobre/Galeria/Contato)
+   não cabem mais na largura toda com o espaçamento normal — encolhe fonte
+   e preenchimento para caber sem depender da rolagem horizontal (que
+   continua como rede de segurança em telas ainda mais estreitas). */
+@media (max-width: 26rem) {
+  .topo nav {
+    gap: 0.05rem;
+  }
+
+  .topo nav a {
+    padding: 0.34rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== Rodapé ===== */
+
+.rodape {
+  border-top: 1px solid var(--cor-borda);
+}
+
+.rodape-conteudo {
+  max-width: var(--largura-conteudo);
+  margin-inline: auto;
+  padding: 1.4rem 1.25rem;
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+}
+
+/* ===== Herói ===== */
+
+.heroi {
+  padding-block: 2rem 0.5rem;
+}
+
+.heroi h1 {
+  font-size: clamp(2.2rem, 1.3rem + 3.8vw, 3.6rem);
+  max-width: 22ch;
+}
+
+.texto-gradiente {
+  background: var(--gradiente);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.linha-selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+
+/* ===== Selos (badges de estado / comodidades) ===== */
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  padding: 0.16rem 0.7rem;
+  font-size: 0.82rem;
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie);
+  white-space: nowrap;
+}
+
+.selo::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: currentcolor;
+  flex: none;
+}
+
+.selo-ok {
+  color: var(--cor-ok);
+}
+
+.selo-aviso {
+  color: var(--cor-aviso);
+}
+
+.selo-erro {
+  color: var(--cor-erro);
+}
+
+/* ===== Grade de estatísticas ===== */
+
+.grade-stats {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+}
+
+.stat {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.stat-rotulo {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.stat-valor {
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+/* ===== Botões ===== */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 999px;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  transition: border-color var(--duracao), translate var(--duracao);
+}
+
+.botao:hover {
+  border-color: var(--cor-destaque);
+  translate: 0 -1px;
+}
+
+.botao-primario {
+  background: var(--cor-destaque);
+  border-color: transparent;
+  color: var(--cor-sobre-destaque);
+}
+
+.botao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  translate: none;
+}
+
+.grupo-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block: 0.9rem;
+}
+
+/* ===== Caixa de aviso/callout ===== */
+
+.chamada-caixa {
+  border-inline-start: 3px solid var(--cor-destaque);
+  background: var(--cor-superficie);
+  border-radius: var(--raio-s);
+  padding: 0.8rem 1rem;
+  margin-block: 1rem;
+  color: var(--cor-texto-suave);
+  max-width: 72ch;
+}
+
+/* ===== Código (baseline genérica) ===== */
+
+code {
+  font-family: var(--fonte-mono);
+  font-size: 0.9em;
+  background: var(--cor-superficie-2);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+pre {
+  background: var(--cor-codigo-fundo);
+  color: var(--cor-codigo-texto);
+  border-radius: var(--raio-s);
+  padding: 1rem 1.15rem;
+  overflow: auto;
+  max-height: 26rem;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* ===== Tabelas ===== */
+
+.rolagem-x {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: top;
+}
+
+th {
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* ===== Toast de atualização do service worker ===== */
+
+.toast {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 0.8rem 1rem;
+  box-shadow: var(--sombra);
+  max-width: min(92vw, 24rem);
+  translate: 0 calc(100% + 1.5rem);
+  transition: translate 350ms cubic-bezier(0.2, 0.9, 0.3, 1.15);
+}
+
+.toast.visivel {
+  translate: 0 0;
+}

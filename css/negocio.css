@@ -1,0 +1,458 @@
+/*
+ * negocio.css — estilos de conteúdo compartilhados pelas 5 páginas do site
+ * institucional (index.html, cursos.html, sobre.html, galeria.html,
+ * contato.html).
+ */
+
+main > section {
+  margin-block: 3rem;
+  scroll-margin-top: 4.5rem; /* header sticky não cobre o topo da seção ao rolar até a âncora */
+}
+
+main > section h2 {
+  margin-bottom: 0.4rem;
+}
+
+main > section > .lide {
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Serviços ===== */
+
+.grade-servicos {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  margin-top: 1.5rem;
+}
+
+.card-servico {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+  box-shadow: var(--sombra);
+}
+
+.card-servico-icone {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card-servico h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.card-servico p {
+  color: var(--cor-texto-suave);
+  font-size: 0.94rem;
+}
+
+/* Card-serviço como link inteiro (index.html → âncoras de cursos.html). */
+a.card-servico {
+  color: var(--cor-texto);
+  text-decoration: none;
+  transition: border-color var(--duracao), translate var(--duracao);
+}
+
+a.card-servico:hover {
+  border-color: var(--cor-destaque);
+  translate: 0 -2px;
+}
+
+.card-servico .preco-mini {
+  display: block;
+  margin-top: 0.6rem;
+  font-weight: 700;
+  color: var(--cor-destaque-forte);
+}
+
+/* ===== Prova social (Início) ===== */
+
+.prova-social-grade {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+  margin-top: 1.25rem;
+}
+
+.prova-social-grade .stat {
+  flex: 0 0 auto;
+}
+
+.prova-social-grade .depoimento {
+  flex: 1 1 20rem;
+  margin: 0;
+}
+
+/* ===== Faixa de chamada para ação (rodapé de página) ===== */
+
+.faixa-cta {
+  text-align: center;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 2.5rem 1.5rem;
+}
+
+.faixa-cta .lide {
+  margin-inline: auto;
+}
+
+.faixa-cta .grupo-botoes {
+  justify-content: center;
+}
+
+/* ===== Sobre ===== */
+
+.sobre-negocio {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(14rem, 1fr);
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+.sobre-negocio-texto p + p {
+  margin-top: 0.75rem;
+}
+
+.stat-estrelas {
+  font-size: 0.6em; /* dimensiona junto do texto do card, sem depender de JS */
+  margin-block: 0.1rem 0.2rem;
+}
+
+@media (max-width: 46rem) {
+  .sobre-negocio {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Depoimentos ===== */
+
+.grade-depoimentos {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin-top: 1.5rem;
+}
+
+.depoimento {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-left: 3px solid var(--cor-destaque);
+  border-radius: var(--raio-s);
+  padding: 1.1rem 1.3rem;
+  margin: 0;
+}
+
+.depoimento p {
+  font-style: italic;
+  color: var(--cor-texto);
+}
+
+.depoimento footer {
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--cor-texto-suave);
+  font-style: normal;
+}
+
+/* ===== Contato ===== */
+
+.contato-grade {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  align-items: flex-start;
+  margin-top: 1.25rem;
+}
+
+.contato-info p {
+  margin-bottom: 0.5rem;
+}
+
+.contato-info a {
+  margin-left: 0.4ch;
+}
+
+/* ===== Rodapé institucional ===== */
+
+.rodape-negocio .rodape-conteudo {
+  align-items: flex-start;
+}
+
+.rodape-negocio p {
+  margin: 0;
+}
+
+/* ===== Galeria de fotos ===== */
+
+.grade-galeria {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin-top: 1.5rem;
+}
+
+.grade-galeria figure {
+  margin: 0;
+}
+
+.item-galeria {
+  display: block;
+  border-radius: var(--raio);
+  overflow: hidden;
+  border: 1px solid var(--cor-borda);
+  cursor: zoom-in;
+}
+
+.item-galeria img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  transition: scale var(--duracao);
+}
+
+.item-galeria:hover img {
+  scale: 1.04;
+}
+
+.grade-galeria figcaption {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* Visualizador de foto (lightbox), via <dialog> nativo — ver js/galeria.js. */
+
+dialog#visualizador-foto {
+  position: relative; /* âncora para o botão de fechar, que é position: absolute */
+  border: none;
+  border-radius: var(--raio);
+  padding: 1rem;
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  max-width: min(92vw, 50rem);
+  box-shadow: var(--sombra);
+}
+
+dialog#visualizador-foto::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+
+dialog#visualizador-foto img {
+  display: block;
+  max-width: 100%;
+  max-height: 70vh;
+  margin-inline: auto;
+  border-radius: var(--raio-s);
+}
+
+dialog#visualizador-foto p {
+  text-align: center;
+  color: var(--cor-texto-suave);
+  margin-top: 0.75rem;
+}
+
+.fechar-dialogo {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border-radius: 999px;
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.fechar-dialogo:hover {
+  border-color: var(--cor-destaque);
+}
+
+/* ===== Cards de preço (cursos.html) ===== */
+
+.grade-precos {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin-top: 1.75rem;
+}
+
+.card-preco {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem 1.35rem;
+  box-shadow: var(--sombra);
+  scroll-margin-top: 5rem; /* âncoras (#workshop, #pacotes) vindas da home */
+}
+
+.card-preco-destaque {
+  border: 2px solid var(--cor-destaque);
+}
+
+.card-preco .etiqueta {
+  position: absolute;
+  top: -0.8rem;
+  left: 1.35rem;
+  background: var(--cor-destaque);
+  color: var(--cor-sobre-destaque);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+.card-preco h3 {
+  font-size: 1.15rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.1rem;
+}
+
+.card-preco .preco {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--cor-destaque-forte);
+  margin-top: 0.35rem;
+}
+
+.card-preco .preco-nota {
+  font-size: 0.82rem;
+  color: var(--cor-texto-suave);
+  margin-bottom: 0.9rem;
+}
+
+.card-preco ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+  flex: 1;
+}
+
+.card-preco li {
+  position: relative;
+  padding: 0.3rem 0 0.3rem 1.4rem;
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.card-preco li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--cor-destaque);
+}
+
+.card-preco .botao {
+  align-self: flex-start;
+}
+
+.tabela-precos {
+  margin-top: 1.75rem;
+}
+
+/* ===== Faixa de clientes (empresas) ===== */
+
+.faixa-clientes {
+  margin-top: 1.5rem;
+}
+
+.rotulo-clientes {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cor-texto-suave);
+  margin-bottom: 0.7rem;
+}
+
+.logos-clientes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.8rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logos-clientes li {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--cor-texto);
+  opacity: 0.75;
+}
+
+/* ===== Faixa CTA em destaque (gift card) ===== */
+
+.faixa-cta--destaque {
+  background: var(--cor-destaque);
+  border-color: transparent;
+  color: var(--cor-sobre-destaque);
+}
+
+.faixa-cta--destaque h2 {
+  color: var(--cor-sobre-destaque);
+}
+
+.faixa-cta--destaque .lide {
+  color: color-mix(in srgb, var(--cor-sobre-destaque) 82%, transparent);
+}
+
+.faixa-cta--destaque .botao-primario {
+  background: var(--cor-sobre-destaque);
+  color: var(--cor-destaque-forte);
+}
+
+/* ===== FAQ (cursos.html) ===== */
+
+.lista-faq {
+  max-width: 60rem;
+  margin-top: 1.5rem;
+}
+
+.faq-item {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--cor-borda);
+}
+
+.faq-item h3 {
+  font-size: 1.02rem;
+  margin-bottom: 0.3rem;
+}
+
+.faq-item p {
+  color: var(--cor-texto-suave);
+}
+
+/* ===== Galeria: placeholders "em breve" ===== */
+
+.galeria-em-breve {
+  display: grid;
+  place-items: center;
+  min-height: 12rem;
+  padding: 1rem;
+  text-align: center;
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie-2);
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}

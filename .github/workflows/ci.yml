@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-html:
+    name: Validar HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npx --yes html-validate "**/*.html"
+
+  check-links:
+    name: Verificar links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          # api.github.com: evita gastar o rate limit anônimo em toda checagem de CI.
+          # pgillets.github.io: é a própria URL de produção deste site — checar aqui
+          # criaria uma dependência circular (o CI de um push/PR passaria a depender
+          # do Pages já estar publicado e propagado, o que é instável e nem sempre
+          # verdadeiro, sobretudo antes do primeiro deploy ou em forks).
+          # instagram.com / wa.me: redes sociais que bloqueiam/limitam bots (403/429)
+          # de forma instável — não é sinal útil de link quebrado no nosso HTML.
+          args: >-
+            --no-progress
+            --accept 200..=204,429
+            --exclude "https://api\.github\.com.*"
+            --exclude "https://pgillets\.github\.io.*"
+            --exclude "https://www\.instagram\.com.*"
+            --exclude "https://wa\.me.*"
+            --exclude "http://localhost.*"
+            "**/*.html" "**/*.md"
+          fail: true

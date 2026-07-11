@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Só as páginas indexáveis entram aqui: index.html, cursos.html, sobre.html
+  e contato.html. galeria.html tem <meta name="robots" content="noindex"> e,
+  por isso, fica fora deste sitemap — é a própria recomendação do Google.
+
+  lastmod é o campo que o Google mais usa para decidir quando reindexar —
+  atualize só quando o CONTEÚDO da página mudar de verdade.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pgillets.github.io/simple_site_mentalize/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://pgillets.github.io/simple_site_mentalize/cursos.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pgillets.github.io/simple_site_mentalize/sobre.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pgillets.github.io/simple_site_mentalize/contato.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

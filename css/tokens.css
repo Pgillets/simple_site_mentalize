@@ -1,0 +1,94 @@
+/*
+ * tokens.css — só design tokens (CSS custom properties).
+ *
+ * Paleta da marca Mentalize Joias: terracota (#9F3E2E), ameixa (#2A1013),
+ * oliva (#666646), creme (#FEFDF2) e preto. O tema claro usa creme de fundo
+ * com texto ameixa; o tema escuro (não especificado no manual de marca) é
+ * derivado a partir da ameixa, com a terracota clareada para manter
+ * contraste. Todas as combinações texto/fundo verificadas em AA (WCAG).
+ *
+ * O tema inteiro do site é definido aqui. O bloco escuro aparece duas vezes
+ * de propósito (é o preço honesto do zero-build, sem pré-processador):
+ *   1. dentro de @media (prefers-color-scheme: dark), quando o visitante segue
+ *      o sistema e NÃO forçou o tema claro;
+ *   2. em :root[data-tema="escuro"], quando o visitante escolheu o escuro
+ *      explicitamente (js/tema.js grava a escolha em localStorage).
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Cores */
+  --cor-fundo: #fefdf2;
+  --cor-superficie: #ffffff;
+  --cor-superficie-2: #f3ecdd;
+  --cor-texto: #2a1013;
+  --cor-texto-suave: #5f4b43;
+  --cor-borda: #e6dcc8;
+  --cor-destaque: #9f3e2e;
+  --cor-destaque-forte: #7e2f22;
+  --cor-sobre-destaque: #fefdf2;
+  --cor-ok: #2e7d32;
+  --cor-aviso: #92400e;
+  --cor-erro: #b3261e;
+  --cor-codigo-fundo: #241016;
+  --cor-codigo-texto: #f3ecdd;
+  --gradiente: linear-gradient(120deg, #9f3e2e, #666646);
+
+  /* Tipografia */
+  --fonte: "Mulish", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Forma e ritmo */
+  --raio: 14px;
+  --raio-s: 8px;
+  --sombra: 0 1px 2px rgb(42 16 19 / 0.05), 0 10px 28px -14px rgb(42 16 19 / 0.18);
+  --duracao: 180ms;
+  --largura-conteudo: 68rem;
+}
+
+/* Tema escuro seguindo o sistema (sem escolha explícita do visitante). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    color-scheme: dark;
+
+    --cor-fundo: #1e0c0f;
+    --cor-superficie: #2a1013;
+    --cor-superficie-2: #3a181c;
+    --cor-texto: #fbf4e6;
+    --cor-texto-suave: #c9b4a6;
+    --cor-borda: #46242a;
+    --cor-destaque: #d9714e;
+    --cor-destaque-forte: #e8916e;
+    --cor-sobre-destaque: #2a1013;
+    --cor-ok: #7fb77f;
+    --cor-aviso: #e0b45c;
+    --cor-erro: #f08a80;
+    --cor-codigo-fundo: #160809;
+    --cor-codigo-texto: #f3ecdd;
+    --gradiente: linear-gradient(120deg, #d9714e, #a6a063);
+    --sombra: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -14px rgb(0 0 0 / 0.6);
+  }
+}
+
+/* Tema escuro escolhido explicitamente (data-tema vem de js/tema-boot.js). */
+:root[data-tema="escuro"] {
+  color-scheme: dark;
+
+  --cor-fundo: #1e0c0f;
+  --cor-superficie: #2a1013;
+  --cor-superficie-2: #3a181c;
+  --cor-texto: #fbf4e6;
+  --cor-texto-suave: #c9b4a6;
+  --cor-borda: #46242a;
+  --cor-destaque: #d9714e;
+  --cor-destaque-forte: #e8916e;
+  --cor-sobre-destaque: #2a1013;
+  --cor-ok: #7fb77f;
+  --cor-aviso: #e0b45c;
+  --cor-erro: #f08a80;
+  --cor-codigo-fundo: #160809;
+  --cor-codigo-texto: #f3ecdd;
+  --gradiente: linear-gradient(120deg, #d9714e, #a6a063);
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -14px rgb(0 0 0 / 0.6);
+}
