@@ -37,5 +37,6 @@ jobs:
             --exclude "https://pgillets\.github\.io.*"
             --exclude "https://www\.instagram\.com.*"
             --exclude "https://wa\.me.*"
+            --exclude "http://localhost.*"
             "**/*.html" "**/*.md"
           fail: true

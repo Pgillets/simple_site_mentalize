@@ -23,7 +23,7 @@ Os módulos ES exigem um servidor HTTP (não funcionam via `file://`):
 python3 tools/servidor.py
 ```
 
-Abra <http://localhost:8000/>. Para simular o prefixo do GitHub Pages:
+Abra `http://localhost:8000/`. Para simular o prefixo do GitHub Pages:
 
 ```bash
 python3 tools/servidor.py --base simple_site_mentalize

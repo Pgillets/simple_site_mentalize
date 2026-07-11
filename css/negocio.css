@@ -361,6 +361,10 @@ dialog#visualizador-foto p {
   align-self: flex-start;
 }
 
+.tabela-precos {
+  margin-top: 1.75rem;
+}
+
 /* ===== Faixa de clientes (empresas) ===== */
 
 .faixa-clientes {
