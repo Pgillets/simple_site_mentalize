@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <title>Mentalize Joias — Ateliê de Joalheria Autoral · Vila Mariana, SP</title>
+  <meta name="description" content="Ateliê de joalheria autoral na Vila Mariana, São Paulo. Aulas, workshops, alianças feitas à mão e experiências para empresas — sua joia começa nas suas próprias mãos.">
+
+  <!-- Únicas URLs absolutas do projeto: atualize para o seu domínio ao publicar. -->
+  <link rel="canonical" href="https://pgillets.github.io/simple_site_mentalize/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mentalize Joias — Ateliê de Joalheria Autoral">
+  <meta property="og:description" content="Aulas, workshops e experiências de joalheria em mesa coletiva, na Vila Mariana. Sua joia começa nas suas próprias mãos.">
+  <meta property="og:url" content="https://pgillets.github.io/simple_site_mentalize/">
+  <meta property="og:image" content="https://pgillets.github.io/simple_site_mentalize/assets/og-capa-negocio.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fefdf2">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e0c0f">
+
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/icones/icone-256.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/componentes.css">
+  <link rel="stylesheet" href="./css/negocio.css">
+
+  <!-- Anti-FOUC: aplica o tema salvo ANTES do primeiro paint. Script clássico e bloqueante de propósito. -->
+  <script src="./js/tema-boot.js"></script>
+  <script type="module" src="./js/site.js"></script>
+
+  <!--
+    Dados estruturados (schema.org/LocalBusiness). Ajudam buscadores a mostrar
+    nome, endereço e telefone direto no resultado de busca. Bloco só nesta
+    página (index.html é a URL canônica do negócio). Sem "aggregateRating"
+    (não há avaliações reais publicadas) e sem horas fixas (atendimento por
+    agendamento via WhatsApp).
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Mentalize Joias",
+    "description": "Ateliê de joalheria autoral: aulas, workshops, alianças feitas à mão e experiências para empresas, em mesa coletiva na Vila Mariana.",
+    "image": "https://pgillets.github.io/simple_site_mentalize/assets/og-capa-negocio.png",
+    "url": "https://pgillets.github.io/simple_site_mentalize/",
+    "telephone": "+55-11-96317-7116",
+    "priceRange": "R$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua França Pinto, 83",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "areaServed": "São Paulo",
+    "sameAs": [
+      "https://www.instagram.com/mentalize.joias"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <cabecalho-site class="topo-conteudo" data-pagina="inicio" nome-negocio="Mentalize Joias"></cabecalho-site>
+    <noscript>
+      <nav class="topo-conteudo" aria-label="Navegação principal">
+        <a href="./index.html">Início</a>
+        <a href="./cursos.html">Cursos</a>
+        <a href="./sobre.html">Sobre</a>
+        <a href="./galeria.html">Galeria</a>
+        <a href="./contato.html">Contato</a>
+      </nav>
+    </noscript>
+  </header>
+
+  <main id="conteudo">
+    <section class="heroi">
+      <h1>Sua joia começa nas suas próprias mãos.</h1>
+      <p class="lide">
+        Aulas, workshops e experiências de joalheria em mesa coletiva, na Vila
+        Mariana — pra quem nunca encostou num maçarico e quer sair daqui com uma
+        peça de verdade.
+      </p>
+      <div class="grupo-botoes">
+        <a class="botao botao-primario" href="https://wa.me/5511963177116" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="botao" href="./cursos.html">Conhecer os cursos</a>
+      </div>
+      <div class="linha-selos">
+        <span class="selo">Turmas pequenas, mesa coletiva</span>
+        <span class="selo">Sem experiência prévia</span>
+        <span class="selo">A partir de R$&nbsp;177</span>
+      </div>
+    </section>
+
+    <section id="ofertas">
+      <h2>O que você pode viver no ateliê</h2>
+      <p class="lide">Do primeiro contato com o metal ao seu projeto autoral — escolha o formato e a gente combina o resto pelo WhatsApp.</p>
+      <div class="grade-servicos">
+        <a class="card-servico" href="./cursos.html#workshop">
+          <span class="card-servico-icone" aria-hidden="true">🔨</span>
+          <h3>Workshop de Sábado</h3>
+          <p>Turma única, sem compromisso de continuidade. Você sai com a peça pronta no mesmo dia — ideal pra experimentar.</p>
+          <span class="preco-mini">A partir de R$&nbsp;407</span>
+        </a>
+        <a class="card-servico" href="./cursos.html#pacotes">
+          <span class="card-servico-icone" aria-hidden="true">📅</span>
+          <h3>Pacotes de Aula</h3>
+          <p>Aulas semanais em turma pequena, do zero ao seu projeto autoral. Quanto mais aulas, menor o valor por aula.</p>
+          <span class="preco-mini">A partir de R$&nbsp;177</span>
+        </a>
+        <a class="card-servico" href="./cursos.html#aliancas">
+          <span class="card-servico-icone" aria-hidden="true">💍</span>
+          <h3>Alianças para Casais</h3>
+          <p>Façam, com as próprias mãos, a peça que representa esse momento. Em prata, com café e quitutes inclusos.</p>
+          <span class="preco-mini">A partir de R$&nbsp;2.097</span>
+        </a>
+        <a class="card-servico" href="./cursos.html#empresas">
+          <span class="card-servico-icone" aria-hidden="true">👥</span>
+          <h3>Workshops para Empresas</h3>
+          <p>Team building pela criação manual: criatividade, colaboração e presença — dentro ou fora do ateliê.</p>
+          <span class="preco-mini">R$&nbsp;720 / pessoa</span>
+        </a>
+        <a class="card-servico" href="./cursos.html#gift-card">
+          <span class="card-servico-icone" aria-hidden="true">🎁</span>
+          <h3>Gift Card</h3>
+          <p>Dê de presente uma tarde de criar. Vale para qualquer curso, workshop ou experiência do ateliê.</p>
+          <span class="preco-mini">A partir de R$&nbsp;177</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="sobre-resumo">
+      <h2>Um ateliê para criar, aprender e desacelerar</h2>
+      <p class="lide">
+        Fundada por <strong>Isabella Cotta</strong> e <strong>Karol Nagata</strong>, a
+        Mentalize nasceu da vontade de transformar o fazer manual em um espaço de
+        criação — e de desaceleração, num mundo que não para. Aqui você aprende
+        trocando com quem está do seu lado, em mesa coletiva.
+      </p>
+      <p><a class="botao" href="./sobre.html">Conheça nossa história →</a></p>
+    </section>
+
+    <section class="faixa-cta">
+      <h2>Bora criar sua próxima peça?</h2>
+      <p class="lide">Manda uma mensagem e a gente te ajuda a escolher o formato certo — curso, alianças, presente ou evento de empresa.</p>
+      <div class="grupo-botoes">
+        <a class="botao botao-primario" href="https://wa.me/5511963177116" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="botao" href="./contato.html">Ver formas de contato</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape rodape-negocio">
+    <div class="rodape-conteudo">
+      <div>
+        <strong>Mentalize Joias</strong>
+        <p>Rua França Pinto, 83 — Vila Mariana, São Paulo, SP · <a href="https://wa.me/5511963177116" target="_blank" rel="noopener">WhatsApp</a></p>
+      </div>
+      <p>
+        <a href="https://www.instagram.com/mentalize.joias" target="_blank" rel="noopener">Instagram</a>
+        · <a href="https://github.com/pgillets/simple_site_mentalize">Código no GitHub</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
