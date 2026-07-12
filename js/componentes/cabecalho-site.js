@@ -10,14 +10,21 @@
  * O único lugar a editar para adicionar, renomear ou remover uma página do
  * site é o array PAGINAS abaixo.
  *
- * A marca é a logotipo-assinatura ("mentalize") como imagem — não texto —
- * porque o wordmark tem letra desenhada (o "n" manuscrito). No tema escuro a
- * arte preta é invertida para branca via CSS (.marca-logo).
+ * A marca ("mentalize" com o "n" manuscrito) já vem como markup estático
+ * dentro de <cabecalho-site> em cada página (<a class="marca"><img
+ * class="marca-logo" ...></a>) — assim ela existe no HTML servido, visível
+ * a crawlers que não executam JavaScript. Este componente só a reaproveita;
+ * se por algum motivo ela não estiver presente, cria como fallback. No tema
+ * escuro a arte preta é invertida para branca via CSS (.marca-logo).
  *
  * Uso (em cada página):
  *   <header class="topo">
  *     <cabecalho-site class="topo-conteudo" data-pagina="sobre"
- *                     nome-negocio="Mentalize Joias"></cabecalho-site>
+ *                     nome-negocio="Mentalize Joias">
+ *       <a class="marca" href="./index.html">
+ *         <img class="marca-logo" src="./assets/logo-preto.png" alt="Mentalize Joias" width="128" height="24">
+ *       </a>
+ *     </cabecalho-site>
  *     <noscript>...link de navegação em texto puro...</noscript>
  *   </header>
  */
@@ -42,16 +49,21 @@ class CabecalhoSite extends HTMLElement {
     const nomeDoNegocio = this.getAttribute("nome-negocio") ?? "";
     const paginaAtual = this.getAttribute("data-pagina") ?? "";
 
-    const marca = document.createElement("a");
-    marca.className = "marca";
-    marca.href = "./index.html";
-    const logo = document.createElement("img");
-    logo.className = "marca-logo";
-    logo.src = "./assets/logo-preto.png";
-    logo.alt = nomeDoNegocio; // dá o nome acessível ao link da marca
-    logo.width = 128;
-    logo.height = 24;
-    marca.append(logo);
+    // A marca normalmente já vem como markup estático (ver comentário acima).
+    // Fallback: cria caso a página não a inclua.
+    if (!this.querySelector(".marca")) {
+      const marca = document.createElement("a");
+      marca.className = "marca";
+      marca.href = "./index.html";
+      const logo = document.createElement("img");
+      logo.className = "marca-logo";
+      logo.src = "./assets/logo-preto.png";
+      logo.alt = nomeDoNegocio;
+      logo.width = 128;
+      logo.height = 24;
+      marca.append(logo);
+      this.append(marca);
+    }
 
     const nav = document.createElement("nav");
     nav.setAttribute("aria-label", "Navegação principal");
@@ -70,7 +82,7 @@ class CabecalhoSite extends HTMLElement {
     botaoTema.id = "alternar-tema";
     botaoTema.setAttribute("aria-label", "Alternar tema");
 
-    this.append(marca, nav, botaoTema);
+    this.append(nav, botaoTema);
   }
 }
 

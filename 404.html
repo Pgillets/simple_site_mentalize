@@ -3,52 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <title>Página não encontrada · Mentalize Joias</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fefdf2">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e0c0f">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2b2b1d">
+
+  <link rel="stylesheet" href="./css/pagina-404.css">
   <!--
     Este arquivo entra em cena sempre que alguém acessa um caminho que não
     existe (ex.: um link ou URL digitada errada, tipo /sobr.html). Este site
     tem múltiplas páginas reais, então isso é um caso genuíno e frequente —
     por isso o link de volta abaixo é tratado como parte da experiência.
   -->
-  <style>
-    :root { color-scheme: light dark; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: #fefdf2;
-      color: #2a1013;
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    @media (prefers-color-scheme: dark) {
-      body { background: #1e0c0f; color: #fbf4e6; }
-      a { color: #e8916e; }
-    }
-    a { color: #7e2f22; }
-    .caixa { max-width: 30rem; }
-    h1 { font-size: 1.6rem; margin: 0 0 0.6rem; }
-    .botao-inicio {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.55rem 1.3rem;
-      border-radius: 999px;
-      background: #9f3e2e;
-      color: #fefdf2;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .aviso-redirecionamento {
-      margin-top: 0.6rem;
-      font-size: 0.85rem;
-      opacity: 0.75;
-    }
-  </style>
 </head>
 <body>
   <div class="caixa">
@@ -57,22 +27,6 @@
     <p><a id="link-inicio" class="botao-inicio" href="./">Voltar ao início</a></p>
     <p class="aviso-redirecionamento">Redirecionando automaticamente em instantes…</p>
   </div>
-  <script>
-    // Caminhos internos da aplicação começam com o fragmento "#" e nunca
-    // chegam até aqui — este script só trata caminhos realmente inexistentes.
-    // Detecção pelo CAMINHO (não pelo hostname): funciona igual em
-    // localhost, no project page e no domínio próprio, sem edição.
-    (function () {
-      var repositorio = "simple_site_mentalize";
-      var segmentos = location.pathname.split("/").filter(Boolean);
-      var naRaizDoProjeto = segmentos[0] === repositorio;
-      var destino = naRaizDoProjeto ? "/" + repositorio + "/" : "/";
-      document.getElementById("caminho").textContent = location.pathname;
-      document.getElementById("link-inicio").setAttribute("href", destino);
-      setTimeout(function () {
-        location.replace(destino);
-      }, 1200);
-    })();
-  </script>
+  <script src="./js/pagina-404.js"></script>
 </body>
 </html>
