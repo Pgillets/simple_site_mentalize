@@ -16,12 +16,21 @@
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v3";
+const VERSAO = "v4";
 const CACHE = `shell-${VERSAO}`;
 
-// As 5 páginas do site — usadas também pelo fallback de navegação offline
+// As 8 páginas do site — usadas também pelo fallback de navegação offline
 // abaixo. Adicionar uma página nova ao site? Acrescente o arquivo aqui.
-const PAGINAS = ["./index.html", "./cursos.html", "./sobre.html", "./galeria.html", "./contato.html"];
+const PAGINAS = [
+  "./index.html",
+  "./cursos.html",
+  "./aliancas.html",
+  "./empresas.html",
+  "./presente.html",
+  "./sobre.html",
+  "./galeria.html",
+  "./contato.html",
+];
 
 const PRECACHE = [
   "./",

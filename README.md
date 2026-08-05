@@ -9,8 +9,11 @@ HTML/CSS/JS estático, **sem etapa de build** — `git push` é o deploy inteiro
 ## Páginas
 
 - `index.html` — início (hero + resumo das ofertas)
-- `cursos.html` — cursos, alianças, empresas, gift card e FAQ (com os valores)
-- `sobre.html` — o ateliê e as fundadoras
+- `cursos.html` — curso regular de joalheria em cera (pacotes Experimentar/Desenvolver/Aprofundar)
+- `aliancas.html` — alianças feitas à mão, para casais
+- `empresas.html` — workshops corporativos
+- `presente.html` — gift card / presentear uma experiência
+- `sobre.html` — a história do ateliê e as fundadoras
 - `galeria.html` — galeria (placeholders "em breve" até haver fotos reais)
 - `contato.html` — endereço, WhatsApp e Instagram
 - `privacidade.html` — política de privacidade (cookies, Google/Meta)
@@ -71,7 +74,35 @@ A CSP de cada página já libera os domínios necessários do Google
 (`connect.facebook.net`, `facebook.com`) para scripts, chamadas de rede e o
 pixel de imagem de fallback.
 
+## Banner promocional (10% OFF em dupla)
+
+O banner "10% OFF em qualquer pacote comprando em dupla" está ativo em
+`cursos.html` (classe `.faixa-promo`, definida em `css/negocio.css`). Para
+desativar, basta remover o `<p class="faixa-promo">...</p>` da página — não
+depende de nenhum outro arquivo.
+
+## Avaliações do Google
+
+Ainda não temos o link do perfil da Mentalize no Google Meu Negócio/Maps, então
+os blocos "O que dizem os casais/as equipes/quem já presenteou"
+(`aliancas.html`, `empresas.html`, `presente.html`) usam o mesmo placeholder
+discreto "em breve" já usado para depoimentos. Quando o link existir, dá pra:
+
+1. Trocar o placeholder por citações reais copiadas do perfil (mais simples,
+   sem custo, sem mudança de CSP); ou
+2. Embutir um widget ao vivo — normalmente exige uma API key do Google Places
+   (com billing) ou um serviço de terceiro, e mudanças na CSP de cada página
+   para liberar o domínio usado.
+
+## Aula Dupla (anel de noivado)
+
+Em `presente.html`, a experiência "Aula Dupla" (recomendada para quem vai criar
+um anel de noivado) está com preço "Sob consulta" — o valor ainda não foi
+definido.
+
 ## Pendências de conteúdo
 
-- Fotos reais para a galeria, o hero e as alianças (hoje há placeholders "em breve").
-- Depoimentos reais de alunos/casais (a seção em `sobre.html` está aguardando).
+- Fotos reais para a galeria, o hero, as alianças, a equipe e as demais
+  páginas novas (hoje há placeholders "em breve" em todas elas).
+- Depoimentos/avaliações reais (ver seção "Avaliações do Google" acima).
+- Preço da Aula Dupla (ver seção acima).

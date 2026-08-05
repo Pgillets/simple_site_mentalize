@@ -1,7 +1,7 @@
 /*
- * negocio.css — estilos de conteúdo compartilhados pelas 5 páginas do site
- * institucional (index.html, cursos.html, sobre.html, galeria.html,
- * contato.html).
+ * negocio.css — estilos de conteúdo compartilhados pelas páginas do site
+ * institucional (index.html, cursos.html, aliancas.html, empresas.html,
+ * presente.html, sobre.html, galeria.html, contato.html, privacidade.html).
  */
 
 main > section {
@@ -455,4 +455,48 @@ dialog#visualizador-foto p {
   background: var(--cor-superficie-2);
   color: var(--cor-texto-suave);
   font-size: 0.9rem;
+}
+
+/* ===== Listas com marcador (fora dos cards de preço) ===== */
+
+.lista-marcada {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+  max-width: 46rem;
+}
+
+.lista-marcada li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1.6rem;
+  color: var(--cor-texto-suave);
+}
+
+.lista-marcada li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--cor-destaque);
+}
+
+.lista-marcada--check li::before {
+  content: "✔";
+}
+
+/* ===== Faixa promocional (banner de desconto) ===== */
+
+.faixa-promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  background: var(--gradiente);
+  color: var(--cor-sobre-destaque);
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
 }
