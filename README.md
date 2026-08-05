@@ -13,6 +13,7 @@ HTML/CSS/JS estático, **sem etapa de build** — `git push` é o deploy inteiro
 - `sobre.html` — o ateliê e as fundadoras
 - `galeria.html` — galeria (placeholders "em breve" até haver fotos reais)
 - `contato.html` — endereço, WhatsApp e Instagram
+- `privacidade.html` — política de privacidade (cookies, Google/Meta)
 - `404.html` — página de erro com redirecionamento
 
 ## Rodar localmente
@@ -42,6 +43,33 @@ python3 tools/servidor.py --base simple_site_mentalize
 
 Ao publicar mudanças em arquivos do PRECACHE, suba a constante `VERSAO` em
 `sw.js` para o service worker invalidar o cache antigo.
+
+## Analytics: Meta Pixel e Google Tag Manager
+
+O site já vem preparado para rastreamento via **Google Tag Manager (GTM)**,
+mas nada carrega até o visitante aceitar a faixa de cookies (`js/consentimento.js`) —
+ver `privacidade.html` para o texto mostrado a ele.
+
+Para ativar:
+
+1. Crie uma conta no [Google Tag Manager](https://tagmanager.google.com/) e
+   pegue o **Container ID** (formato `GTM-XXXXXXX`).
+2. Cole esse ID na constante `GTM_CONTAINER_ID`, no topo de `js/consentimento.js`
+   — é o único lugar do código que precisa ser editado.
+3. **O Pixel da Meta, o Google Analytics (GA4), o Google Ads e qualquer outra
+   tag são configurados depois, dentro do próprio painel do GTM** (Meta tem um
+   template oficial de "Facebook Pixel" na galeria de templates do GTM) —
+   não é necessário editar o site de novo para isso.
+4. Publique o container no GTM.
+
+Enquanto `GTM_CONTAINER_ID` estiver com o valor de exemplo (`GTM-XXXXXXX`), o
+clique em "Aceitar" tenta carregar um container inexistente — falha em
+silêncio, sem quebrar a página, só não envia dados de verdade.
+
+A CSP de cada página já libera os domínios necessários do Google
+(`googletagmanager.com`, `google-analytics.com`) e da Meta
+(`connect.facebook.net`, `facebook.com`) para scripts, chamadas de rede e o
+pixel de imagem de fallback.
 
 ## Pendências de conteúdo
 
