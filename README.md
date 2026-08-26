@@ -72,6 +72,24 @@ Os PNG são quadrados cheios, sem transparência e sem canto arredondado —
 a mesma convenção dos ícones anteriores; só o `favicon.svg` arredonda. Ao
 regerar, suba a `VERSAO` em `sw.js`: os quatro arquivos estão no `PRECACHE`.
 
+### Capa de compartilhamento (og:image)
+
+`assets/og-capa-negocio.png` (1200×630) é a imagem que aparece ao compartilhar
+o site no WhatsApp, Instagram e Facebook. Gerada por:
+
+```bash
+python3 tools/gerar-capa-og.py
+```
+
+O script descomprime o `woff2` da Avenir para `ttf` em memória e desenha o texto
+com `PIL.ImageFont` — mesma ideia do gerador de ícones: determinístico, sem
+depender de um navegador resolver fonte. Era exatamente esse o defeito da versão
+anterior, cujas duas linhas de texto saíram numa sans-serif genérica porque a
+fonte da marca não carregou na hora de gerar.
+
+A capa **não** entra no `PRECACHE` de `sw.js`: quem a consome são os crawlers das
+redes sociais, não o site.
+
 ### Fonte Avenir (auto-hospedada)
 
 A Avenir é a fonte da marca e fica **auto-hospedada** em `assets/fontes/`, em
@@ -130,9 +148,11 @@ redeclarar o token.
 > Stories como `.otf` — formatos que normalmente correspondem a licença
 > **desktop**. Auto-hospedar como webfont deixa o arquivo publicamente
 > baixável e costuma exigir uma licença **web** separada. Vale confirmar com o
-> fornecedor antes de manter isso em produção. A Best Stories (Rantau Studio)
-> ao menos declara `fsType = 0` no `OS/2`, ou seja, incorporação instalável
-> sem restrição — o que é um sinal favorável, mas não substitui a licença.
+> fornecedor. **Decidido manter assim** — fica registrado aqui porque a
+> exposição é da cliente, não porque haja ação pendente. A Best Stories
+> (Rantau Studio) ao menos declara `fsType = 0` no `OS/2`, ou seja,
+> incorporação instalável sem restrição — sinal favorável, mas que não
+> substitui a licença.
 
 ## Publicar (GitHub Pages + domínio próprio)
 
@@ -248,23 +268,29 @@ discreto "em breve" já usado para depoimentos. Quando o link existir, dá pra:
 ## Aula Dupla (anel de noivado)
 
 Em `presente.html`, a experiência "Aula Dupla" (recomendada para quem vai criar
-um anel de noivado) está com preço "Sob consulta" — o valor ainda não foi
-definido.
+um anel de noivado) fica com preço **"Sob consulta"** — decidido, não é
+pendência. Aparece em dois lugares na página: no card "Para viver um momento
+especial" e na seção `#noivado`.
 
 ## Pendências de conteúdo
 
 - **Página "Aula Experimental"** — a cliente pediu uma página nova para essa
-  experiência ("PÁGINA NOVA AULA EXPERIMENTAL"), mas o conteúdo ainda não veio.
-  Enquanto isso, o card "Experimente fazer sua primeira joia" na Home aponta
-  para `presente.html#workshop-coletivo`, que descreve o mesmo workshop.
-  Quando o conteúdo chegar: criar a página, incluir no `PAGINAS` de
-  `js/componentes/cabecalho-site.js` e de `sw.js`, no `sitemap.xml`, e trocar o
-  `href` do card.
+  experiência ("PÁGINA NOVA AULA EXPERIMENTAL — BOTÃO: AULA DUPLA E WS AA"),
+  mas o conteúdo ainda não veio. Nessa anotação, **WS = Workshop**; o que "AA"
+  significa segue em aberto. Enquanto isso, o card "Experimente fazer sua
+  primeira joia" na Home aponta para `presente.html#workshop-coletivo`, que
+  descreve o mesmo workshop. Quando o conteúdo chegar: criar a página, incluir
+  no `PAGINAS` de `js/componentes/cabecalho-site.js` e de `sw.js`, no
+  `sitemap.xml`, e trocar o `href` do card.
 - Fotos reais para a galeria, o hero, as alianças, a equipe e as demais
-  páginas (hoje há placeholders "em breve" em todas elas).
+  páginas (hoje há 29 placeholders "em breve").
 - Depoimentos/avaliações reais (ver seção "Avaliações do Google" acima).
-- Preço da Aula Dupla (ver seção acima).
-- Confirmar a licença **web** da Avenir (ver "Fonte Avenir" acima).
+- **Container do Google Tag Manager** — `GTM_CONTAINER_ID` em
+  `js/consentimento.js` segue no valor de exemplo (ver seção "Analytics" acima).
+
+Decisões já fechadas, que **não** são pendência: o preço da Aula Dupla fica
+"Sob consulta", e a licença da Avenir fica como está (ver as duas seções
+adiante).
 
 ## Preços: onde cada número aparece
 

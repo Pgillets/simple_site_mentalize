@@ -26,6 +26,16 @@ main > section > .lide {
   margin-top: 1.5rem;
 }
 
+/* São 5 ofertas. No auto-fit, a partir de ~1024px a grade abre em 4 colunas e
+   a quinta fica sozinha na segunda linha. Fixar 3 colunas no desktop resolve
+   em 3+2 e ainda dá cards mais largos. Abaixo daqui o auto-fit já se resolve
+   bem sozinho (3+2 perto de 768px, um por linha no celular). */
+@media (min-width: 60rem) {
+  .grade-servicos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .card-servico {
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
