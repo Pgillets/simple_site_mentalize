@@ -18,13 +18,14 @@
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v8";
+const VERSAO = "v9";
 const CACHE = `shell-${VERSAO}`;
 
-// As 8 páginas do site — usadas também pelo fallback de navegação offline
+// As 9 páginas do site — usadas também pelo fallback de navegação offline
 // abaixo. Adicionar uma página nova ao site? Acrescente o arquivo aqui.
 const PAGINAS = [
   "./index.html",
+  "./aula-experimental.html",
   "./cursos.html",
   "./aliancas.html",
   "./empresas.html",
@@ -120,7 +121,7 @@ async function networkFirst(requisicao) {
     const emCache = await cache.match(requisicao, { ignoreSearch: true });
     if (emCache) return emCache;
     if (requisicao.mode === "navigate") {
-      // Cada uma das 5 páginas já está cacheada com o próprio caminho — o
+      // Cada página do array PAGINAS já está cacheada com o próprio caminho — o
       // cache.match acima já resolve a maioria dos casos offline. Este
       // fallback só entra em cena para um caminho de navegação não
       // reconhecido (ex.: um link com typo); nesse caso, cai no Início.
