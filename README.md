@@ -74,25 +74,29 @@ A segunda fonte do manual é a **Best Stories** — a manuscrita de onde vem o
 `n` cursivo do wordmark "mentalize". Também auto-hospedada, em
 `assets/fontes/best-stories.woff2`, com `@font-face` em `css/tokens.css`.
 
-Ela **não** entra em `--fonte`. Fica no token `--fonte-manuscrita`, para ser
-aplicada ponto a ponto:
+Ela **não** entra em `--fonte`. Fica no token `--fonte-manuscrita`, aplicado
+ponto a ponto pela classe `.manuscrita` (`css/componentes.css`). Hoje o único
+uso é o trecho final do H1 da Home:
 
-```css
-h1 em { font-family: var(--fonte-manuscrita); font-size: 1.45em; }
+```html
+<h1>Sua joia começa nas <span class="manuscrita">suas próprias mãos</span></h1>
 ```
 
-Duas coisas a respeitar ao usá-la:
+É a mesma lógica do wordmark, que mistura Avenir com uma letra da Best
+Stories. Um `<span>`, não um `<em>`: muda a tipografia, não o significado.
+
+Três coisas a respeitar ao usá-la:
 
 - **Só acentos curtos** — uma palavra, uma assinatura, um heading. Em corpo de
   texto e em elementos pequenos (`.selo`, `.preco-mini`) fica ilegível.
 - **Compensar o tamanho** — a altura-x dela é bem menor que a da Avenir, então
   no mesmo `font-size` parece encolhida. `1.4em`–`1.5em` equilibra.
+- **Zerar a herança do título** — `font-weight: 400` (a fonte só existe em um
+  peso; sem isso o navegador sintetiza negrito falso dentro de um `h1`) e
+  `letter-spacing: normal` (o `h1` usa `-0.02em`, que cola as ligaduras).
 
-Enquanto nenhuma regra CSS usar `--fonte-manuscrita`, o navegador **não baixa**
-o arquivo (um `@font-face` não referenciado não gera requisição) — por isso ele
-também ainda não está no `PRECACHE` de `sw.js`. Ao aplicar o token em algum
-lugar, acrescente `./assets/fontes/best-stories.woff2` ao `PRECACHE` e suba a
-`VERSAO`.
+A classe `.manuscrita` já faz as três coisas — reaproveite-a em vez de
+redeclarar o token.
 
 > **Licenciamento:** os arquivos da Avenir vieram como `.ttf` e o da Best
 > Stories como `.otf` — formatos que normalmente correspondem a licença

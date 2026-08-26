@@ -175,6 +175,32 @@
   max-width: 22ch;
 }
 
+/* Trecho manuscrito dentro de um título: a mesma lógica do wordmark, que
+   mistura Avenir com uma letra da Best Stories. Três correções obrigatórias,
+   porque o título traz herança que não serve para uma cursiva:
+     - font-size 1.45em compensa a altura-x, bem menor que a da Avenir;
+     - font-weight 400 evita negrito sintético (h1 é bold por padrão e a fonte
+       só existe em um peso);
+     - letter-spacing normal desfaz o -0.02em do h1, que colaria as ligaduras.
+   O span é decorativo de propósito (não <em>): muda a tipografia, não o
+   significado da frase. */
+.manuscrita {
+  font-family: var(--fonte-manuscrita);
+  font-size: 1.45em;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+/* A Best Stories desce 53px de tinta abaixo da linha de base no tamanho do
+   hero, contra 14px da Avenir — medido no Chromium. Com o line-height 1.15
+   dos títulos, esse rabo invade o parágrafo seguinte. O :has() dá a folga
+   apenas ao título que realmente tem o trecho manuscrito: os outros oito
+   heróis do site seguem sem padding extra. Em em, para escalar junto com o
+   clamp() do font-size. */
+.heroi h1:has(.manuscrita) {
+  padding-bottom: 0.55em;
+}
+
 .texto-gradiente {
   background: var(--gradiente);
   background-clip: text;

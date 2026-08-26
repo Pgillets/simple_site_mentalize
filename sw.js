@@ -17,7 +17,7 @@
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v6";
+const VERSAO = "v7";
 const CACHE = `shell-${VERSAO}`;
 
 // As 8 páginas do site — usadas também pelo fallback de navegação offline
@@ -54,6 +54,7 @@ const PRECACHE = [
   "./assets/fontes/avenir-book.woff2",
   "./assets/fontes/avenir-regular.woff2",
   "./assets/fontes/avenir-heavy.woff2",
+  "./assets/fontes/best-stories.woff2",
   "./assets/favicon.svg",
   "./assets/logo-preto.png",
   "./assets/logo-branco.png",
