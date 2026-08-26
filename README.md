@@ -43,6 +43,34 @@ local — o `--base` de `tools/servidor.py` existia para simular o subcaminho do
   `css/componentes.css`) mostra a que combina com o tema, sem filtro de inversão.
   O nome acessível fica no `aria-label` do link `.marca`, então as imagens são
   decorativas (`alt=""`).
+- **Favicon e ícones do PWA:** o **"n" cursivo do wordmark**, creme sobre
+  terracota. Gerados por `tools/gerar-icones.py` — ver abaixo.
+
+### Ícones (favicon + PWA)
+
+`assets/favicon.svg` e os três PNG de `assets/icones/` saem do mesmo desenho: o
+`n` manuscrito de "me*n*talize", a letra que a Best Stories dá ao logotipo.
+
+```bash
+pip install fonttools brotli pillow
+python3 tools/gerar-icones.py
+```
+
+Duas decisões que o script registra em comentário e vale repetir aqui:
+
+- **O glifo é embutido como path vetorial**, extraído da fonte — não como
+  `<text font-family="...">`. Num favicon nenhuma webfont carrega, então um
+  `<text>` cairia numa fonte genérica do sistema. Era o que acontecia antes: o
+  SVG pedia `Mulish` (fonte que o site nem usa mais) e o navegador desenhava a
+  letra em Arial.
+- **O `maskable` é menor de propósito** (62% da largura, contra 78% dos
+  demais). O Android pode recortar o ícone em qualquer forma dentro de um
+  círculo de 80% do lado; para a proporção deste glifo (~2,32:1) o limite é
+  73,5%, e 62% deixa folga.
+
+Os PNG são quadrados cheios, sem transparência e sem canto arredondado —
+a mesma convenção dos ícones anteriores; só o `favicon.svg` arredonda. Ao
+regerar, suba a `VERSAO` em `sw.js`: os quatro arquivos estão no `PRECACHE`.
 
 ### Fonte Avenir (auto-hospedada)
 
