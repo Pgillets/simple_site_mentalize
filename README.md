@@ -35,7 +35,8 @@ python3 tools/servidor.py --base simple_site_mentalize
 
 ## Identidade visual
 
-- **Cores e fontes:** `css/tokens.css` (paleta terracota/ameixa/oliva/creme; fonte **Avenir**).
+- **Cores e fontes:** `css/tokens.css` (paleta terracota/ameixa/oliva/creme;
+  fontes **Avenir** e **Best Stories**).
 - **Logotipo:** `assets/logo-preto.png` (fundo claro) e `assets/logo-branco.png`
   (fundo escuro) — as duas artes do manual da marca. O cabeçalho traz as duas no
   HTML e o CSS (`.marca-logo--claro` / `.marca-logo--escuro`, em
@@ -67,10 +68,39 @@ Para trocar ou acrescentar um peso: converta o `.ttf` com
 (precisa de `pip install fonttools brotli`), adicione o `@font-face` e inclua o
 arquivo no `PRECACHE` de `sw.js`, subindo a `VERSAO`.
 
-> **Licenciamento:** os arquivos vieram como `.ttf`, que normalmente
-> correspondem a licença **desktop**. Auto-hospedar como webfont deixa o
-> arquivo publicamente baixável e costuma exigir uma licença **web** separada.
-> Vale confirmar com o fornecedor da licença antes de manter isso em produção.
+### Fonte Best Stories (manuscrita)
+
+A segunda fonte do manual é a **Best Stories** — a manuscrita de onde vem o
+`n` cursivo do wordmark "mentalize". Também auto-hospedada, em
+`assets/fontes/best-stories.woff2`, com `@font-face` em `css/tokens.css`.
+
+Ela **não** entra em `--fonte`. Fica no token `--fonte-manuscrita`, para ser
+aplicada ponto a ponto:
+
+```css
+h1 em { font-family: var(--fonte-manuscrita); font-size: 1.45em; }
+```
+
+Duas coisas a respeitar ao usá-la:
+
+- **Só acentos curtos** — uma palavra, uma assinatura, um heading. Em corpo de
+  texto e em elementos pequenos (`.selo`, `.preco-mini`) fica ilegível.
+- **Compensar o tamanho** — a altura-x dela é bem menor que a da Avenir, então
+  no mesmo `font-size` parece encolhida. `1.4em`–`1.5em` equilibra.
+
+Enquanto nenhuma regra CSS usar `--fonte-manuscrita`, o navegador **não baixa**
+o arquivo (um `@font-face` não referenciado não gera requisição) — por isso ele
+também ainda não está no `PRECACHE` de `sw.js`. Ao aplicar o token em algum
+lugar, acrescente `./assets/fontes/best-stories.woff2` ao `PRECACHE` e suba a
+`VERSAO`.
+
+> **Licenciamento:** os arquivos da Avenir vieram como `.ttf` e o da Best
+> Stories como `.otf` — formatos que normalmente correspondem a licença
+> **desktop**. Auto-hospedar como webfont deixa o arquivo publicamente
+> baixável e costuma exigir uma licença **web** separada. Vale confirmar com o
+> fornecedor antes de manter isso em produção. A Best Stories (Rantau Studio)
+> ao menos declara `fsType = 0` no `OS/2`, ou seja, incorporação instalável
+> sem restrição — o que é um sinal favorável, mas não substitui a licença.
 
 ## Publicar (GitHub Pages)
 

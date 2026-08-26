@@ -53,6 +53,25 @@
   font-display: swap;
 }
 
+/*
+ * Best Stories — a segunda fonte do manual da marca, a manuscrita. É dela que
+ * vem o "n" cursivo do wordmark "mentalize". Também auto-hospedada.
+ *
+ * Uso reservado a acentos curtos (uma palavra, uma assinatura): é uma fonte de
+ * exibição, ilegível em corpo de texto e em tamanhos pequenos. Não entra em
+ * --fonte; fica em --fonte-manuscrita, aplicada ponto a ponto.
+ *
+ * Um @font-face que nenhuma regra usa não é baixado pelo navegador, então
+ * declarar isto aqui não custa nada enquanto o token não for aplicado.
+ */
+@font-face {
+  font-family: "Best Stories";
+  src: url("../assets/fontes/best-stories.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
 
@@ -75,6 +94,7 @@
 
   /* Tipografia */
   --fonte: "Avenir", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-manuscrita: "Best Stories", "Segoe Script", cursive;
   --fonte-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
 
   /* Forma e ritmo */
