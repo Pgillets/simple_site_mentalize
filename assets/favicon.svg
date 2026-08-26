@@ -1,6 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mentalize">
   <rect width="64" height="64" rx="16" fill="#9f3e2e"/>
-  <text x="32" y="34" text-anchor="middle" dominant-baseline="central"
-        font-family="'Mulish', 'Segoe UI', Arial, sans-serif" font-size="40" font-weight="700"
-        fill="#fefdf2">m</text>
+  <path transform="translate(6.1312 45.7621) scale(0.144475 -0.144475)" fill="#fefdf2" d="M352 102C349 108 337 110 329 105C249 52 219 49 206 54C190 61 191 89 191 115C192 140 192 164 172 169C154 174 129 158 88 117C81 110 75 104 70 98C60 89 50 79 61 90C60 87 71 109 79 125C83 132 80 142 72 145C65 147 53 142 49 135C31 99 21 79 15 65C8 50 0 32 13 23C26 15 42 29 51 39C62 48 75 61 92 79C98 84 104 91 110 97C148 135 158 139 157 138C158 138 158 121 157 110C157 79 156 39 188 25C194 22 202 21 210 21C241 21 286 41 345 80C353 85 352 102 352 102Z"/>
 </svg>

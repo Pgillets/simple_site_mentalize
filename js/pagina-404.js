@@ -4,15 +4,15 @@
  * demais páginas do site.
  *
  * Caminhos internos da aplicação começam com o fragmento "#" e nunca chegam
- * até aqui — este script só trata caminhos realmente inexistentes. Detecção
- * pelo CAMINHO (não pelo hostname): funciona igual em localhost, no project
- * page e no domínio próprio, sem edição.
+ * até aqui — este script só trata caminhos realmente inexistentes.
+ *
+ * O site é servido na raiz de mentalizejoias.com.br, então o destino é sempre
+ * "/". Antes havia aqui uma detecção do subcaminho /simple_site_mentalize/,
+ * necessária enquanto o endereço era o project page do GitHub Pages; com o
+ * domínio próprio ela deixou de ter função.
  */
 (function () {
-  var repositorio = "simple_site_mentalize";
-  var segmentos = location.pathname.split("/").filter(Boolean);
-  var naRaizDoProjeto = segmentos[0] === repositorio;
-  var destino = naRaizDoProjeto ? "/" + repositorio + "/" : "/";
+  var destino = "/";
   document.getElementById("caminho").textContent = location.pathname;
   document.getElementById("link-inicio").setAttribute("href", destino);
   setTimeout(function () {

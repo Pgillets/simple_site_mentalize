@@ -24,7 +24,7 @@ jobs:
       - uses: lycheeverse/lychee-action@v2
         with:
           # api.github.com: evita gastar o rate limit anônimo em toda checagem de CI.
-          # pgillets.github.io: é a própria URL de produção deste site — checar aqui
+          # mentalizejoias.com.br: é a própria URL de produção deste site — checar aqui
           # criaria uma dependência circular (o CI de um push/PR passaria a depender
           # do Pages já estar publicado e propagado, o que é instável e nem sempre
           # verdadeiro, sobretudo antes do primeiro deploy ou em forks).
@@ -34,7 +34,7 @@ jobs:
             --no-progress
             --accept 200..=204,429
             --exclude "https://api\.github\.com.*"
-            --exclude "https://pgillets\.github\.io.*"
+            --exclude "https://mentalizejoias\.com\.br.*"
             --exclude "https://www\.instagram\.com.*"
             --exclude "https://wa\.me.*"
             --exclude "http://localhost.*"

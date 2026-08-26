@@ -1,7 +1,8 @@
 # simple_site_mentalize
 
 Site institucional para **Mentalize Joias** — ateliê de joalheria autoral na
-Vila Mariana, São Paulo. Hospedado via GitHub Pages.
+Vila Mariana, São Paulo. Publicado em **https://mentalizejoias.com.br** via
+GitHub Pages.
 
 Construído a partir do template [`simple_single_page_app`](https://github.com/pgillets/simple_single_page_app):
 HTML/CSS/JS estático, **sem etapa de build** — `git push` é o deploy inteiro.
@@ -18,6 +19,7 @@ HTML/CSS/JS estático, **sem etapa de build** — `git push` é o deploy inteiro
 - `contato.html` — endereço, WhatsApp e Instagram
 - `privacidade.html` — política de privacidade (cookies, Google/Meta)
 - `404.html` — página de erro com redirecionamento
+- `CNAME` — domínio próprio lido pelo GitHub Pages (`mentalizejoias.com.br`)
 
 ## Rodar localmente
 
@@ -27,11 +29,9 @@ Os módulos ES exigem um servidor HTTP (não funcionam via `file://`):
 python3 tools/servidor.py
 ```
 
-Abra `http://localhost:8000/`. Para simular o prefixo do GitHub Pages:
-
-```bash
-python3 tools/servidor.py --base simple_site_mentalize
-```
+Abra `http://localhost:8000/`. O site é servido na raiz do domínio, igual ao
+local — o `--base` de `tools/servidor.py` existia para simular o subcaminho do
+*project page* do GitHub Pages e não é mais necessário.
 
 ## Identidade visual
 
@@ -43,6 +43,34 @@ python3 tools/servidor.py --base simple_site_mentalize
   `css/componentes.css`) mostra a que combina com o tema, sem filtro de inversão.
   O nome acessível fica no `aria-label` do link `.marca`, então as imagens são
   decorativas (`alt=""`).
+- **Favicon e ícones do PWA:** o **"n" cursivo do wordmark**, creme sobre
+  terracota. Gerados por `tools/gerar-icones.py` — ver abaixo.
+
+### Ícones (favicon + PWA)
+
+`assets/favicon.svg` e os três PNG de `assets/icones/` saem do mesmo desenho: o
+`n` manuscrito de "me*n*talize", a letra que a Best Stories dá ao logotipo.
+
+```bash
+pip install fonttools brotli pillow
+python3 tools/gerar-icones.py
+```
+
+Duas decisões que o script registra em comentário e vale repetir aqui:
+
+- **O glifo é embutido como path vetorial**, extraído da fonte — não como
+  `<text font-family="...">`. Num favicon nenhuma webfont carrega, então um
+  `<text>` cairia numa fonte genérica do sistema. Era o que acontecia antes: o
+  SVG pedia `Mulish` (fonte que o site nem usa mais) e o navegador desenhava a
+  letra em Arial.
+- **O `maskable` é menor de propósito** (62% da largura, contra 78% dos
+  demais). O Android pode recortar o ícone em qualquer forma dentro de um
+  círculo de 80% do lado; para a proporção deste glifo (~2,32:1) o limite é
+  73,5%, e 62% deixa folga.
+
+Os PNG são quadrados cheios, sem transparência e sem canto arredondado —
+a mesma convenção dos ícones anteriores; só o `favicon.svg` arredonda. Ao
+regerar, suba a `VERSAO` em `sw.js`: os quatro arquivos estão no `PRECACHE`.
 
 ### Fonte Avenir (auto-hospedada)
 
@@ -106,14 +134,69 @@ redeclarar o token.
 > ao menos declara `fsType = 0` no `OS/2`, ou seja, incorporação instalável
 > sem restrição — o que é um sinal favorável, mas não substitui a licença.
 
-## Publicar (GitHub Pages)
+## Publicar (GitHub Pages + domínio próprio)
 
-1. Nas configurações do repositório: **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
+O site é servido em **https://mentalizejoias.com.br** (domínio registrado na
+GoDaddy, DNS na própria GoDaddy — nameservers `ns13/ns14.domaincontrol.com`).
+
+1. Nas configurações do repositório: **Settings → Pages → Deploy from a branch →
+   `main` → `/ (root)`**.
 2. O repositório precisa ser **público** (plano gratuito do Pages).
-3. Faça o merge da branch de trabalho em `main`; o Pages publica automaticamente.
+3. Em **Settings → Pages → Custom domain**, informe `mentalizejoias.com.br`.
+   O arquivo `CNAME` na raiz já contém esse valor — é ele que o Pages lê, então
+   não apague nem renomeie.
+4. Espere o certificado ser emitido e marque **Enforce HTTPS**.
+5. Faça o merge da branch de trabalho em `main`; o Pages publica automaticamente.
 
-Ao publicar mudanças em arquivos do PRECACHE, suba a constante `VERSAO` em
-`sw.js` para o service worker invalidar o cache antigo.
+### DNS na GoDaddy
+
+Painel: **Meus produtos → Domínios → mentalizejoias.com.br → DNS**.
+
+Trocar o apontamento do apex e do `www`:
+
+| Ação | Tipo | Nome | Valor | TTL |
+|---|---|---|---|---|
+| **remover** | A | `@` | `13.248.243.5` (estacionamento GoDaddy) | — |
+| **remover** | A | `@` | `76.223.105.230` (estacionamento GoDaddy) | — |
+| criar | A | `@` | `185.199.108.153` | 600 |
+| criar | A | `@` | `185.199.109.153` | 600 |
+| criar | A | `@` | `185.199.110.153` | 600 |
+| criar | A | `@` | `185.199.111.153` | 600 |
+| criar | AAAA | `@` | `2606:50c0:8000::153` | 600 |
+| criar | AAAA | `@` | `2606:50c0:8001::153` | 600 |
+| criar | AAAA | `@` | `2606:50c0:8002::153` | 600 |
+| criar | AAAA | `@` | `2606:50c0:8003::153` | 600 |
+| **alterar** | CNAME | `www` | de `mentalizejoias.com.br` para `pgillets.github.io` | 600 |
+
+Os quatro IPv4 e os quatro IPv6 são os endereços fixos do GitHub Pages para
+domínio apex. O `www` como CNAME faz o Pages redirecionar `www` → apex sozinho,
+com 301 — não é preciso configurar redirecionamento na GoDaddy.
+
+**Não mexer** no registro `TXT` de `_dmarc` (é de e-mail, criado por padrão pela
+GoDaddy) nem nos nameservers. O domínio hoje **não tem registro MX**, ou seja,
+não há e-mail configurado nele — então essa troca de DNS não derruba nenhuma
+caixa de e-mail.
+
+⚠️ **Desligar o redirecionamento de domínio** em **Domain Settings → Forwarding**
+antes de salvar o DNS. Os dois A de estacionamento vêm do *forwarding* da
+GoDaddy; se ele continuar ativo, a GoDaddy recria esses registros e sobrescreve
+os do GitHub.
+
+Depois de propagar (normalmente minutos, até algumas horas), confira:
+
+```bash
+# deve devolver os quatro 185.199.x.153
+python3 -c "import socket; print(sorted({i[4][0] for i in socket.getaddrinfo('mentalizejoias.com.br', 443)}))"
+```
+
+### Ao publicar mudanças
+
+Suba a constante `VERSAO` em `sw.js` sempre que mudar um arquivo do `PRECACHE`,
+para o service worker invalidar o cache antigo.
+
+> O código-fonte continua público: o plano gratuito do GitHub Pages exige
+> repositório público. O rodapé do site não linka mais para o repositório, mas
+> isso só deixa de divulgá-lo — não o torna privado.
 
 ## Analytics: Meta Pixel e Google Tag Manager
 
