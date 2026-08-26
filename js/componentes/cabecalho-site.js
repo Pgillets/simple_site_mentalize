@@ -14,15 +14,17 @@
  * dentro de <cabecalho-site> em cada página (<a class="marca"><img
  * class="marca-logo" ...></a>) — assim ela existe no HTML servido, visível
  * a crawlers que não executam JavaScript. Este componente só a reaproveita;
- * se por algum motivo ela não estiver presente, cria como fallback. No tema
- * escuro a arte preta é invertida para branca via CSS (.marca-logo).
+ * se por algum motivo ela não estiver presente, cria como fallback. As duas
+ * artes da marca (preta e branca) ficam no HTML e o CSS mostra a que combina
+ * com o tema (.marca-logo--claro / .marca-logo--escuro).
  *
  * Uso (em cada página):
  *   <header class="topo">
  *     <cabecalho-site class="topo-conteudo" data-pagina="sobre"
  *                     nome-negocio="Mentalize Joias">
- *       <a class="marca" href="./index.html">
- *         <img class="marca-logo" src="./assets/logo-preto.png" alt="Mentalize Joias" width="128" height="24">
+ *       <a class="marca" href="./index.html" aria-label="Mentalize Joias — página inicial">
+ *         <img class="marca-logo marca-logo--claro" src="./assets/logo-preto.png" alt="" width="128" height="24">
+ *         <img class="marca-logo marca-logo--escuro" src="./assets/logo-branco.png" alt="" width="128" height="24">
  *       </a>
  *     </cabecalho-site>
  *     <noscript>...link de navegação em texto puro...</noscript>
@@ -58,13 +60,19 @@ class CabecalhoSite extends HTMLElement {
       const marca = document.createElement("a");
       marca.className = "marca";
       marca.href = "./index.html";
-      const logo = document.createElement("img");
-      logo.className = "marca-logo";
-      logo.src = "./assets/logo-preto.png";
-      logo.alt = nomeDoNegocio;
-      logo.width = 128;
-      logo.height = 24;
-      marca.append(logo);
+      marca.setAttribute("aria-label", `${nomeDoNegocio} — página inicial`);
+      for (const [variante, arquivo] of [
+        ["claro", "logo-preto.png"],
+        ["escuro", "logo-branco.png"],
+      ]) {
+        const logo = document.createElement("img");
+        logo.className = `marca-logo marca-logo--${variante}`;
+        logo.src = `./assets/${arquivo}`;
+        logo.alt = "";
+        logo.width = 128;
+        logo.height = 24;
+        marca.append(logo);
+      }
       this.append(marca);
     }
 

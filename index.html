@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://www.facebook.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://www.facebook.com; style-src 'self'; font-src 'self'; script-src 'self' https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com; base-uri 'self'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Mentalize Joias — Ateliê de Joalheria Autoral · Vila Mariana, SP</title>
-  <meta name="description" content="Ateliê de joalheria autoral na Vila Mariana, São Paulo. Aulas, workshops, alianças feitas à mão e experiências para empresas — sua joia começa nas suas próprias mãos.">
+  <meta name="description" content="Ateliê de joalheria na Vila Mariana, São Paulo. Aulas semanais em mesa compartilhada, workshops privativos e experiências de joalheria — um espaço de descompressão para criar com as próprias mãos.">
 
   <!-- Únicas URLs absolutas do projeto: atualize para o seu domínio ao publicar. -->
   <link rel="canonical" href="https://pgillets.github.io/simple_site_mentalize/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Mentalize Joias">
   <meta property="og:title" content="Mentalize Joias — Ateliê de Joalheria Autoral">
-  <meta property="og:description" content="Aulas, workshops e experiências de joalheria em mesa coletiva, na Vila Mariana. Sua joia começa nas suas próprias mãos.">
+  <meta property="og:description" content="Aulas semanais em mesa compartilhada, workshops privativos e experiências de joalheria. Um espaço de descompressão para criar com as próprias mãos.">
   <meta property="og:url" content="https://pgillets.github.io/simple_site_mentalize/">
   <meta property="og:image" content="https://pgillets.github.io/simple_site_mentalize/assets/og-capa-negocio.png">
   <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mentalize Joias — Ateliê de Joalheria Autoral">
-  <meta name="twitter:description" content="Aulas, workshops e experiências de joalheria em mesa coletiva, na Vila Mariana. Sua joia começa nas suas próprias mãos.">
+  <meta name="twitter:description" content="Aulas semanais em mesa compartilhada, workshops privativos e experiências de joalheria. Um espaço de descompressão para criar com as próprias mãos.">
   <meta name="twitter:image" content="https://pgillets.github.io/simple_site_mentalize/assets/og-capa-negocio.png">
 
   <meta name="color-scheme" content="light dark">
@@ -33,10 +33,6 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./assets/icones/icone-256.png">
   <link rel="manifest" href="./manifest.webmanifest">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/base.css">
@@ -60,7 +56,7 @@
     "@type": "LocalBusiness",
     "@id": "https://pgillets.github.io/simple_site_mentalize/#negocio",
     "name": "Mentalize Joias",
-    "description": "Ateliê de joalheria autoral: aulas, workshops, alianças feitas à mão e experiências para empresas, em mesa coletiva na Vila Mariana.",
+    "description": "Ateliê de joalheria: aulas semanais em mesa compartilhada, workshops privativos, alianças feitas à mão e experiências para empresas, na Vila Mariana.",
     "image": "https://pgillets.github.io/simple_site_mentalize/assets/og-capa-negocio.png",
     "url": "https://pgillets.github.io/simple_site_mentalize/",
     "telephone": "+55-11-96317-7116",
@@ -81,7 +77,7 @@
     "areaServed": "São Paulo",
     "founder": [
       { "@type": "Person", "name": "Isabella Cotta" },
-      { "@type": "Person", "name": "Karol Nagata" }
+      { "@type": "Person", "name": "Karoline Nagata" }
     ],
     "sameAs": [
       "https://www.instagram.com/mentalize.joias"
@@ -94,8 +90,9 @@
 
   <header class="topo">
     <cabecalho-site class="topo-conteudo" data-pagina="inicio" nome-negocio="Mentalize Joias">
-      <a class="marca" href="./index.html">
-        <img class="marca-logo" src="./assets/logo-preto.png" alt="Mentalize Joias" width="128" height="24">
+      <a class="marca" href="./index.html" aria-label="Mentalize Joias — página inicial">
+        <img class="marca-logo marca-logo--claro" src="./assets/logo-preto.png" alt="" width="128" height="24">
+        <img class="marca-logo marca-logo--escuro" src="./assets/logo-branco.png" alt="" width="128" height="24">
       </a>
     </cabecalho-site>
     <noscript>
@@ -114,11 +111,11 @@
 
   <main id="conteudo">
     <section class="heroi">
-      <h1>Sua joia começa nas suas próprias mãos.</h1>
+      <h1>Sua joia começa nas <span class="manuscrita">suas próprias mãos</span></h1>
       <p class="lide">
-        Aulas, workshops e experiências de joalheria em mesa coletiva, na Vila
-        Mariana — pra quem nunca encostou num maçarico e quer sair daqui com uma
-        peça de verdade.
+        Aulas semanais ao redor de uma mesa compartilhada, workshops privativos
+        e experiências de joalheria. Um espaço de descompressão para se
+        divertir, criar com as próprias mãos e produzir joias únicas.
       </p>
       <div class="grupo-botoes">
         <a class="botao botao-primario" href="https://wa.me/5511963177116" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
@@ -127,14 +124,30 @@
       <div class="linha-selos">
         <span class="selo">Turmas pequenas, mesa coletiva</span>
         <span class="selo">Sem experiência prévia</span>
-        <span class="selo">A partir de R$&nbsp;337</span>
+        <span class="selo">A partir de R$&nbsp;303 em dupla</span>
       </div>
     </section>
 
     <section id="ofertas">
-      <h2>O que você pode viver no ateliê</h2>
-      <p class="lide">Do primeiro contato com o metal ao seu projeto autoral — escolha o formato e a gente combina o resto pelo WhatsApp.</p>
+      <h2>Jeitos de viver a joalheria</h2>
+      <p class="lide">
+        Do primeiro contato com a joalheria ao desenvolvimento de projetos
+        autorais — seja modelando em cera ou trabalhando direto no metal.
+        Encontre a experiência que mais combina com você.
+      </p>
       <div class="grade-servicos">
+        <a class="card-servico" href="./cursos.html">
+          <span class="card-servico-icone" aria-hidden="true">📅</span>
+          <h3>Crie suas próprias joias em poucas aulas</h3>
+          <p>Aprenda a joalheria em cera e desenvolva projetos autorais desde a primeira aula. Tudo ao redor da nossa mesa compartilhada, com trocas, café e comidinhas acompanhando o processo.</p>
+          <span class="preco-mini">A partir de R$&nbsp;303 em dupla</span>
+        </a>
+        <a class="card-servico" href="./presente.html#workshop-coletivo">
+          <span class="card-servico-icone" aria-hidden="true">🔨</span>
+          <h3>Experimente fazer sua primeira joia</h3>
+          <p>Passe a manhã de um sábado criando com as próprias mãos e transforme sua ideia em um anel exclusivo. Das 10h30 às 13h, ao redor da nossa mesa compartilhada e sem precisar de experiência. Anel em prata incluso.</p>
+          <span class="preco-mini">A partir de R$&nbsp;407</span>
+        </a>
         <a class="card-servico" href="./presente.html#workshop-coletivo">
           <span class="card-servico-icone" aria-hidden="true">🔨</span>
           <h3>Workshop de Sábado</h3>
@@ -169,21 +182,25 @@
     </section>
 
     <section id="sobre-resumo">
-      <h2>Um ateliê para criar, aprender e desacelerar</h2>
+      <h2>Um espaço de descompressão para criar com as próprias mãos</h2>
       <p class="lide">
-        Fundada por <strong>Isabella Cotta</strong> e <strong>Karol Nagata</strong>, a
-        Mentalize nasceu da vontade de transformar o fazer manual em um espaço de
-        criação — e de desaceleração, num mundo que não para. Aqui você aprende
-        trocando com quem está do seu lado, em mesa coletiva.
+        A mentalize nasceu da história de <strong>Isabella Cotta</strong> e
+        <strong>Karoline Nagata</strong> e da vontade de encontrar novos
+        caminhos profissionais após o burnout.
+      </p>
+      <p class="lide">
+        A joalheria se tornou um espaço de criação, troca e experimentação, onde
+        se aprende fazendo e compartilhando processos e ideias ao redor de uma
+        mesa.
       </p>
       <p><a class="botao" href="./sobre.html">Conheça nossa história →</a></p>
     </section>
 
     <section class="faixa-cta">
-      <h2>Bora criar sua próxima peça?</h2>
-      <p class="lide">Manda uma mensagem e a gente te ajuda a escolher o formato certo — curso, alianças, presente ou evento de empresa.</p>
+      <h2>Vem viver a joalheria com a gente</h2>
+      <p class="lide">Seja para viver uma experiência pontual, eternizar um sentimento ou descobrir um novo hobby, tem um jeito de viver a joalheria que combina com você.</p>
       <div class="grupo-botoes">
-        <a class="botao botao-primario" href="https://wa.me/5511963177116" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+        <a class="botao botao-primario" href="https://wa.me/5511963177116" target="_blank" rel="noopener noreferrer">Fale com a gente no WhatsApp</a>
         <a class="botao" href="./contato.html">Ver formas de contato</a>
       </div>
     </section>

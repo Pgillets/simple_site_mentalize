@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--fonte, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
   background: #fefdf2;
   color: #2a1013;
   min-height: 100svh;

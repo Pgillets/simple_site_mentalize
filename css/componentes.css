@@ -40,22 +40,37 @@
   white-space: nowrap;
 }
 
-/* Logotipo "mentalize": arte preta sobre transparente. No tema escuro,
-   invertemos para branca — o wordmark é preto puro, então invert() dá branco
-   limpo sem tingir as bordas. Espelha a lógica de tema de tokens.css. */
+/* Logotipo "mentalize": as duas artes reais do manual da marca — preta para
+   fundo claro, branca para fundo escuro — em vez de inverter uma delas por
+   filtro. Só uma fica visível por vez; a outra sai do layout e da árvore de
+   acessibilidade. Espelha a lógica de tema de tokens.css (preferência do
+   sistema + override manual via data-tema). O nome acessível do link fica no
+   aria-label da .marca, então as duas imagens são decorativas (alt=""). */
 .marca-logo {
   height: 1.5rem;
   width: auto;
 }
 
+.marca-logo--escuro {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .marca-logo {
-    filter: invert(1);
+  :root:not([data-tema="claro"]) .marca-logo--claro {
+    display: none;
+  }
+
+  :root:not([data-tema="claro"]) .marca-logo--escuro {
+    display: block;
   }
 }
 
-:root[data-tema="escuro"] .marca-logo {
-  filter: invert(1);
+:root[data-tema="escuro"] .marca-logo--claro {
+  display: none;
+}
+
+:root[data-tema="escuro"] .marca-logo--escuro {
+  display: block;
 }
 
 .topo nav {
@@ -158,6 +173,32 @@
 .heroi h1 {
   font-size: clamp(2.2rem, 1.3rem + 3.8vw, 3.6rem);
   max-width: 22ch;
+}
+
+/* Trecho manuscrito dentro de um título: a mesma lógica do wordmark, que
+   mistura Avenir com uma letra da Best Stories. Três correções obrigatórias,
+   porque o título traz herança que não serve para uma cursiva:
+     - font-size 1.45em compensa a altura-x, bem menor que a da Avenir;
+     - font-weight 400 evita negrito sintético (h1 é bold por padrão e a fonte
+       só existe em um peso);
+     - letter-spacing normal desfaz o -0.02em do h1, que colaria as ligaduras.
+   O span é decorativo de propósito (não <em>): muda a tipografia, não o
+   significado da frase. */
+.manuscrita {
+  font-family: var(--fonte-manuscrita);
+  font-size: 1.45em;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+/* A Best Stories desce 53px de tinta abaixo da linha de base no tamanho do
+   hero, contra 14px da Avenir — medido no Chromium. Com o line-height 1.15
+   dos títulos, esse rabo invade o parágrafo seguinte. O :has() dá a folga
+   apenas ao título que realmente tem o trecho manuscrito: os outros oito
+   heróis do site seguem sem padding extra. Em em, para escalar junto com o
+   clamp() do font-size. */
+.heroi h1:has(.manuscrita) {
+  padding-bottom: 0.55em;
 }
 
 .texto-gradiente {
