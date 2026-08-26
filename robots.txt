@@ -5,4 +5,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pgillets.github.io/simple_site_mentalize/sitemap.xml
+Sitemap: https://mentalizejoias.com.br/sitemap.xml

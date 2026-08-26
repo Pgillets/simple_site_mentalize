@@ -1,8 +1,8 @@
 /*
  * sw.js — service worker do "app shell", na raiz do repositório de propósito:
  * o escopo padrão de um service worker é o diretório de onde ele é servido,
- * então ficar na raiz garante escopo = base do site tanto em
- * /simple_site_mentalize/ (project page) quanto em / (domínio próprio).
+ * então ficar na raiz garante escopo = base do site em
+ * https://mentalizejoias.com.br/.
  *
  * Estratégia: NETWORK-FIRST para tudo same-origin (navegação e assets do
  * shell), com fallback ao cache. O GitHub Pages já manda os arquivos com
@@ -10,14 +10,15 @@
  * mais uma camada de staleness em cima disso. Network-first elimina o
  * clássico "publiquei e continuo vendo a versão antiga".
  *
- * A fonte da marca (Avenir) é auto-hospedada e entra no PRECACHE. Requisições
- * cross-origin (Google Tag Manager, Pixel) nunca são interceptadas: passam direto.
+ * As fontes da marca (Avenir e Best Stories) são auto-hospedadas e entram no
+ * PRECACHE. Requisições cross-origin (Google Tag Manager, Pixel) nunca são
+ * interceptadas: passam direto.
  *
  * Ao publicar uma mudança em qualquer arquivo do PRECACHE, suba a VERSAO —
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v7";
+const VERSAO = "v8";
 const CACHE = `shell-${VERSAO}`;
 
 // As 8 páginas do site — usadas também pelo fallback de navegação offline
