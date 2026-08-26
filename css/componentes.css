@@ -40,22 +40,37 @@
   white-space: nowrap;
 }
 
-/* Logotipo "mentalize": arte preta sobre transparente. No tema escuro,
-   invertemos para branca — o wordmark é preto puro, então invert() dá branco
-   limpo sem tingir as bordas. Espelha a lógica de tema de tokens.css. */
+/* Logotipo "mentalize": as duas artes reais do manual da marca — preta para
+   fundo claro, branca para fundo escuro — em vez de inverter uma delas por
+   filtro. Só uma fica visível por vez; a outra sai do layout e da árvore de
+   acessibilidade. Espelha a lógica de tema de tokens.css (preferência do
+   sistema + override manual via data-tema). O nome acessível do link fica no
+   aria-label da .marca, então as duas imagens são decorativas (alt=""). */
 .marca-logo {
   height: 1.5rem;
   width: auto;
 }
 
+.marca-logo--escuro {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .marca-logo {
-    filter: invert(1);
+  :root:not([data-tema="claro"]) .marca-logo--claro {
+    display: none;
+  }
+
+  :root:not([data-tema="claro"]) .marca-logo--escuro {
+    display: block;
   }
 }
 
-:root[data-tema="escuro"] .marca-logo {
-  filter: invert(1);
+:root[data-tema="escuro"] .marca-logo--claro {
+  display: none;
+}
+
+:root[data-tema="escuro"] .marca-logo--escuro {
+  display: block;
 }
 
 .topo nav {

@@ -36,7 +36,12 @@ python3 tools/servidor.py --base simple_site_mentalize
 ## Identidade visual
 
 - **Cores e fontes:** `css/tokens.css` (paleta terracota/ameixa/oliva/creme; fonte **Avenir**).
-- **Logotipo:** `assets/logo-preto.png` (fundo claro) e `assets/logo-branco.png` (fundo escuro). O wordmark é usado como imagem no cabeçalho; no tema escuro, a arte preta é invertida via CSS.
+- **Logotipo:** `assets/logo-preto.png` (fundo claro) e `assets/logo-branco.png`
+  (fundo escuro) — as duas artes do manual da marca. O cabeçalho traz as duas no
+  HTML e o CSS (`.marca-logo--claro` / `.marca-logo--escuro`, em
+  `css/componentes.css`) mostra a que combina com o tema, sem filtro de inversão.
+  O nome acessível fica no `aria-label` do link `.marca`, então as imagens são
+  decorativas (`alt=""`).
 
 ### Fonte Avenir (auto-hospedada)
 

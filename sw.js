@@ -17,7 +17,7 @@
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v5";
+const VERSAO = "v6";
 const CACHE = `shell-${VERSAO}`;
 
 // As 8 páginas do site — usadas também pelo fallback de navegação offline
