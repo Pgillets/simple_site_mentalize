@@ -10,6 +10,8 @@ HTML/CSS/JS estático, **sem etapa de build** — `git push` é o deploy inteiro
 ## Páginas
 
 - `index.html` — início (hero + resumo das ofertas)
+- `aula-experimental.html` — os dois jeitos de conhecer o curso: Duas Aulas e
+  Workshop de Anéis e Alianças (preço progressivo)
 - `cursos.html` — curso regular de joalheria em cera (pacotes Experimentar/Desenvolver/Aprofundar)
 - `aliancas.html` — alianças feitas à mão, para casais
 - `empresas.html` — workshops corporativos
@@ -265,23 +267,30 @@ discreto "em breve" já usado para depoimentos. Quando o link existir, dá pra:
    (com billing) ou um serviço de terceiro, e mudanças na CSP de cada página
    para liberar o domínio usado.
 
-## Aula Dupla (anel de noivado)
+## Duas Aulas (ex-"Aula Dupla")
 
-Em `presente.html`, a experiência "Aula Dupla" (recomendada para quem vai criar
-um anel de noivado) fica com preço **"Sob consulta"** — decidido, não é
-pendência. Aparece em dois lugares na página: no card "Para viver um momento
-especial" e na seção `#noivado`.
+A cliente explicou (áudio de 26/08) que "aula dupla" confundia os clientes com a
+promoção "em dupla" (10% OFF comprando em duas pessoas), e o site passou a
+chamar a modalidade de **"Duas Aulas"**: duas aulas de 2h30 do curso regular,
+nos horários regulares, com liberdade total de peça e fundição à parte. Custa
+**R$ 337** (o pacote "Experimentar" de `cursos.html`), ou R$ 303 por pessoa em
+dupla. É descrita em `aula-experimental.html` e citada em `presente.html`.
+
+Para o **anel de noivado** (seção `#noivado` de `presente.html` e card "Para
+viver um momento especial"), o valor segue **"Sob consulta"** — decidido, não é
+pendência: com pedra, metal e fundição à parte, o total varia por projeto.
 
 ## Pendências de conteúdo
 
-- **Página "Aula Experimental"** — a cliente pediu uma página nova para essa
-  experiência ("PÁGINA NOVA AULA EXPERIMENTAL — BOTÃO: AULA DUPLA E WS AA"),
-  mas o conteúdo ainda não veio. Nessa anotação, **WS = Workshop**; o que "AA"
-  significa segue em aberto. Enquanto isso, o card "Experimente fazer sua
-  primeira joia" na Home aponta para `presente.html#workshop-coletivo`, que
-  descreve o mesmo workshop. Quando o conteúdo chegar: criar a página, incluir
-  no `PAGINAS` de `js/componentes/cabecalho-site.js` e de `sw.js`, no
-  `sitemap.xml`, e trocar o `href` do card.
+- **O que se faz no Workshop de Anéis e Alianças — anel ou peça livre?** As
+  duas fontes da cliente divergem: o documento escrito (base de
+  `presente.html`) diz que cada pessoa "cria a joia que imaginar… anel,
+  pingente, brincos ou até um par de alianças"; o áudio de 26/08 diz que no
+  workshop "a peça é um anel". `aula-experimental.html` segue o áudio (fonte
+  mais recente e específica); `presente.html` mantém o texto do documento.
+  Nenhuma das duas foi sobrescrita por dedução — falta a cliente bater o
+  martelo, e aí as duas páginas se alinham.
+
 - Fotos reais para a galeria, o hero, as alianças, a equipe e as demais
   páginas (hoje há 29 placeholders "em breve").
 - Depoimentos/avaliações reais (ver seção "Avaliações do Google" acima).
@@ -293,6 +302,18 @@ Decisões já fechadas, que **não** são pendência: o preço da Aula Dupla fic
 adiante).
 
 ## Preços: onde cada número aparece
+
+O **Workshop de Anéis e Alianças** (WSAA) tem desconto progressivo de R$ 10 por
+pessoa adicional, com fundição e 5 g de prata inclusas (áudio da cliente,
+26/08):
+
+| Grupo | Por pessoa | Onde aparece |
+|---|---|---|
+| 1 pessoa | R$ 427 | `aula-experimental.html`, nota de `presente.html` |
+| 2 pessoas | R$ 417 (= R$ 834 o casal) | `aliancas.html` |
+| 3 ou mais | R$ 407 | "A partir de R$ 407" na Home e em `presente.html` |
+
+Os "a partir de R$ 407" continuam corretos: são o menor valor por pessoa.
 
 O curso regular custa **R$ 337** (pacote de 2 a 4 aulas) e há **10% OFF
 comprando em dupla**, o que dá R$ 303. Para não parecer contradição:

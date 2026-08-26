@@ -33,6 +33,7 @@
 
 const PAGINAS = [
   { pagina: "inicio", href: "./index.html", rotulo: "Início" },
+  { pagina: "aula-experimental", href: "./aula-experimental.html", rotulo: "Aula Experimental" },
   { pagina: "cursos", href: "./cursos.html", rotulo: "Cursos" },
   { pagina: "aliancas", href: "./aliancas.html", rotulo: "Alianças" },
   { pagina: "empresas", href: "./empresas.html", rotulo: "Empresas" },
