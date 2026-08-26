@@ -282,14 +282,6 @@ pendência: com pedra, metal e fundição à parte, o total varia por projeto.
 
 ## Pendências de conteúdo
 
-- **O que se faz no Workshop de Anéis e Alianças — anel ou peça livre?** As
-  duas fontes da cliente divergem: o documento escrito (base de
-  `presente.html`) diz que cada pessoa "cria a joia que imaginar… anel,
-  pingente, brincos ou até um par de alianças"; o áudio de 26/08 diz que no
-  workshop "a peça é um anel". `aula-experimental.html` segue o áudio (fonte
-  mais recente e específica); `presente.html` mantém o texto do documento.
-  Nenhuma das duas foi sobrescrita por dedução — falta a cliente bater o
-  martelo, e aí as duas páginas se alinham.
 
 - Fotos reais para a galeria, o hero, as alianças, a equipe e as demais
   páginas (hoje há 29 placeholders "em breve").
@@ -297,7 +289,10 @@ pendência: com pedra, metal e fundição à parte, o total varia por projeto.
 - **Container do Google Tag Manager** — `GTM_CONTAINER_ID` em
   `js/consentimento.js` segue no valor de exemplo (ver seção "Analytics" acima).
 
-Decisões já fechadas, que **não** são pendência: o preço da Aula Dupla fica
+Decisões já fechadas, que **não** são pendência: no **Workshop de Anéis e
+Alianças a peça é só anel ou alianças** (confirmado pela cliente em 26/08 —
+a liberdade total de peça é das Duas Aulas; `presente.html` e
+`aula-experimental.html` já estão alinhadas); o preço da Aula Dupla fica
 "Sob consulta", e a licença da Avenir fica como está (ver as duas seções
 adiante).
 
