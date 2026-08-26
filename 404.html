@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Página não encontrada · Mentalize Joias</title>
@@ -13,6 +13,9 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fefdf2">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2b2b1d">
 
+  <!-- tokens.css entra só pelo @font-face da Avenir (a fonte da marca vale
+       também aqui); as cores desta página são próprias, em pagina-404.css. -->
+  <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/pagina-404.css">
   <!--
     Este arquivo entra em cena sempre que alguém acessa um caminho que não

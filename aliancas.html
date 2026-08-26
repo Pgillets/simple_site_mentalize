@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://www.facebook.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://www.facebook.com; style-src 'self'; font-src 'self'; script-src 'self' https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com; base-uri 'self'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Alianças Feitas à Mão — Mentalize Joias</title>
@@ -32,10 +32,6 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./assets/icones/icone-256.png">
   <link rel="manifest" href="./manifest.webmanifest">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/base.css">
@@ -92,26 +88,46 @@
         vocês.
       </p>
 
-      <div class="grade-precos">
+      <div class="grade-precos grade-precos--empilhada">
         <article class="card-preco" id="workshop-coletivo">
           <h3>🌿 Workshop coletivo | Anéis e alianças</h3>
           <div class="preco">A partir de R$ 834</div>
-          <div class="preco-nota">por casal · sábados, das 10h30 às 13h</div>
+          <div class="preco-nota">por casal</div>
+          <p>Uma manhã de sábado para criar, conversar e viver a atmosfera da mentalize ao redor da nossa mesa compartilhada.</p>
+          <p>
+            Das 10h30 às 13h, diferentes histórias se encontram na mesma mesa.
+            Cada casal cria suas próprias alianças, mas compartilha um momento
+            que todos vão lembrar para sempre.
+          </p>
+          <p>
+            Vocês recebem um bloco de cera e têm liberdade para criar o design
+            que imaginarem. Não trabalhamos com modelos prontos: alianças com
+            digitais, letras, texturas, formas orgânicas ou qualquer detalhe que
+            conte a história de vocês são muito bem-vindas.
+          </p>
           <ul class="lista-marcada--check">
             <li>Workshop aos sábados, das 10h30 às 13h</li>
             <li>Modelagem em cera</li>
             <li>Um par de alianças em prata (até 5g cada) incluso</li>
             <li>Também disponível em ouro mediante orçamento</li>
             <li>Entrega em até 30 dias úteis</li>
+            <li>Gravação, cravação de pedras e banho de ouro disponíveis como serviços adicionais (cobrados à parte)</li>
+            <li>Controle do orçamento antes da fundição</li>
           </ul>
           <a class="botao botao-primario" href="https://wa.me/5511963177116?text=Ol%C3%A1%21%20%F0%9F%98%8A%20Gostaria%20de%20saber%20mais%20sobre%20o%20Workshop%20Coletivo%20de%20An%C3%A9is%20e%20Alian%C3%A7as." target="_blank" rel="noopener noreferrer">Quero agendar nossa experiência</a>
         </article>
 
-        <article class="card-preco card-preco-destaque" id="workshop-privativo-cera">
-          <span class="etiqueta">Mais privacidade</span>
+        <article class="card-preco" id="workshop-privativo-cera">
           <h3>✨ Workshop privativo | Modelagem em cera</h3>
           <div class="preco">A partir de R$ 2.097</div>
-          <div class="preco-nota">por casal · agendamento flexível</div>
+          <div class="preco-nota">por casal</div>
+          <p>Uma experiência exclusiva para quem deseja viver esse momento com mais privacidade, escolhendo o melhor dia e horário.</p>
+          <p>
+            Assim como no workshop coletivo, vocês recebem um bloco de cera e
+            têm liberdade para criar exatamente a aliança que imaginaram. Nossa
+            equipe acompanha todo o processo para transformar essa ideia em
+            realidade.
+          </p>
           <ul class="lista-marcada--check">
             <li>Experiência privativa</li>
             <li>Agendamento flexível</li>
@@ -119,6 +135,8 @@
             <li>Um par de alianças em prata incluso</li>
             <li>Também disponível em ouro mediante orçamento</li>
             <li>Entrega em até 30 dias úteis</li>
+            <li>Gravação, cravação de pedras e banho de ouro disponíveis como serviços adicionais (cobrados à parte)</li>
+            <li>Controle do orçamento antes da fundição</li>
           </ul>
           <a class="botao botao-primario" href="https://wa.me/5511963177116?text=Ol%C3%A1%21%20%F0%9F%98%8A%20Gostaria%20de%20saber%20mais%20sobre%20o%20Workshop%20Privativo%20de%20Alian%C3%A7as%20em%20Cera." target="_blank" rel="noopener noreferrer">Quero agendar nossa experiência</a>
         </article>
@@ -126,18 +144,25 @@
         <article class="card-preco" id="workshop-privativo-metal">
           <h3>🔥 Workshop privativo | Direto no metal</h3>
           <div class="preco">A partir de R$ 2.297</div>
-          <div class="preco-nota">por casal · alianças prontas no mesmo dia</div>
+          <div class="preco-nota">por casal</div>
+          <p>Para quem deseja confeccionar as alianças diretamente no metal e levá-las prontas no mesmo dia.</p>
+          <p>
+            Antes da experiência, vocês podem enviar uma referência do modelo
+            desejado. Avaliamos se ele é compatível com o tempo do workshop ou,
+            se necessário, sugerimos adaptações. No dia, vocês escolhem entre os
+            modelos possíveis ou desenvolvem um projeto previamente aprovado.
+          </p>
           <ul class="lista-marcada--check">
             <li>Experiência privativa</li>
             <li>Agendamento flexível</li>
             <li>Trabalho direto no metal</li>
             <li>Alianças prontas no mesmo dia</li>
             <li>Disponível em prata ou ouro mediante orçamento</li>
+            <li>Gravação, cravação de pedras e banho de ouro disponíveis como serviços adicionais (cobrados à parte)</li>
           </ul>
           <a class="botao botao-primario" href="https://wa.me/5511963177116?text=Ol%C3%A1%21%20%F0%9F%98%8A%20Gostaria%20de%20saber%20mais%20sobre%20o%20Workshop%20Privativo%20de%20Alian%C3%A7as%20em%20Metal." target="_blank" rel="noopener noreferrer">Quero agendar nossa experiência</a>
         </article>
       </div>
-      <p class="preco-nota">Gravação, cravação de pedras e banho de ouro disponíveis como serviços adicionais, cobrados à parte. Controle do orçamento antes da fundição.</p>
     </section>
 
     <section id="ouro">

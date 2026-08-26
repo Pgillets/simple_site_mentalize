@@ -357,8 +357,30 @@ dialog#visualizador-foto p {
   color: var(--cor-destaque);
 }
 
+.card-preco p {
+  color: var(--cor-texto-suave);
+  font-size: 0.94rem;
+  max-width: 62ch;
+}
+
+.card-preco p + p {
+  margin-top: 0.7rem;
+}
+
+.card-preco ul {
+  margin-top: 1.1rem;
+}
+
 .card-preco .botao {
   align-self: flex-start;
+}
+
+/* Variante empilhada: quando cada oferta tem 2–3 parágrafos de texto e uma
+   lista longa (caso dos workshops de alianças), competir numa grade de 3
+   colunas deixa os cards altos e estreitos. Aqui eles ocupam a largura
+   inteira, um abaixo do outro, como o material da cliente os apresenta. */
+.grade-precos--empilhada {
+  grid-template-columns: 1fr;
 }
 
 .tabela-precos {

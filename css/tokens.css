@@ -16,6 +16,43 @@
  *      explicitamente (js/tema.js grava a escolha em localStorage).
  */
 
+/*
+ * Avenir — a fonte da marca, auto-hospedada em assets/fontes/ (woff2).
+ * Auto-hospedada de propósito: sem Google Fonts, a CSP fica em 'self' para
+ * estilos e fontes, e nenhuma requisição sai para terceiros ao carregar a
+ * página.
+ *
+ * Os três arquivos licenciados cobrem toda a escala que o CSS usa. Como o
+ * site só declara font-weight 600, 700 e 800 (além do 400 implícito do corpo
+ * de texto), o Heavy é declarado como uma FAIXA 600–900: assim qualquer um
+ * desses três pesos resolve para ele, sem o navegador sintetizar negrito
+ * falso. O Book (mais leve que o Regular) fica disponível em 300–350 para
+ * texto de exibição, caso um dia se queira um H1 mais leve.
+ */
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fontes/avenir-book.woff2") format("woff2");
+  font-weight: 300 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fontes/avenir-regular.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fontes/avenir-heavy.woff2") format("woff2");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
 
@@ -37,7 +74,7 @@
   --gradiente: linear-gradient(120deg, #9f3e2e, #666646);
 
   /* Tipografia */
-  --fonte: "Mulish", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte: "Avenir", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --fonte-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
 
   /* Forma e ritmo */

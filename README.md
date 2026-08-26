@@ -35,8 +35,37 @@ python3 tools/servidor.py --base simple_site_mentalize
 
 ## Identidade visual
 
-- **Cores e fontes:** `css/tokens.css` (paleta terracota/ameixa/oliva/creme; fonte Mulish).
+- **Cores e fontes:** `css/tokens.css` (paleta terracota/ameixa/oliva/creme; fonte **Avenir**).
 - **Logotipo:** `assets/logo-preto.png` (fundo claro) e `assets/logo-branco.png` (fundo escuro). O wordmark é usado como imagem no cabeçalho; no tema escuro, a arte preta é invertida via CSS.
+
+### Fonte Avenir (auto-hospedada)
+
+A Avenir é a fonte da marca e fica **auto-hospedada** em `assets/fontes/`, em
+`woff2` — sem Google Fonts. Por isso a CSP de todas as páginas usa
+`style-src 'self'; font-src 'self'`, sem liberar domínio de terceiro.
+
+Os `@font-face` estão no topo de `css/tokens.css`. Três arquivos cobrem a
+escala que o CSS usa:
+
+| Arquivo | `font-weight` declarado | Uso |
+|---|---|---|
+| `avenir-book.woff2` | `300 350` | disponível para texto de exibição mais leve |
+| `avenir-regular.woff2` | `400 500` | corpo de texto |
+| `avenir-heavy.woff2` | `600 900` | títulos, botões, preços |
+
+O Heavy é declarado como faixa (`600 900`) de propósito: o CSS usa 600, 700 e
+800, e assim os três resolvem para o mesmo arquivo real, sem o navegador
+sintetizar negrito falso.
+
+Para trocar ou acrescentar um peso: converta o `.ttf` com
+`python3 -c "from fontTools.ttLib import TTFont; f=TTFont('X.ttf'); f.flavor='woff2'; f.save('assets/fontes/x.woff2')"`
+(precisa de `pip install fonttools brotli`), adicione o `@font-face` e inclua o
+arquivo no `PRECACHE` de `sw.js`, subindo a `VERSAO`.
+
+> **Licenciamento:** os arquivos vieram como `.ttf`, que normalmente
+> correspondem a licença **desktop**. Auto-hospedar como webfont deixa o
+> arquivo publicamente baixável e costuma exigir uma licença **web** separada.
+> Vale confirmar com o fornecedor da licença antes de manter isso em produção.
 
 ## Publicar (GitHub Pages)
 
@@ -102,7 +131,27 @@ definido.
 
 ## Pendências de conteúdo
 
+- **Página "Aula Experimental"** — a cliente pediu uma página nova para essa
+  experiência ("PÁGINA NOVA AULA EXPERIMENTAL"), mas o conteúdo ainda não veio.
+  Enquanto isso, o card "Experimente fazer sua primeira joia" na Home aponta
+  para `presente.html#workshop-coletivo`, que descreve o mesmo workshop.
+  Quando o conteúdo chegar: criar a página, incluir no `PAGINAS` de
+  `js/componentes/cabecalho-site.js` e de `sw.js`, no `sitemap.xml`, e trocar o
+  `href` do card.
 - Fotos reais para a galeria, o hero, as alianças, a equipe e as demais
-  páginas novas (hoje há placeholders "em breve" em todas elas).
+  páginas (hoje há placeholders "em breve" em todas elas).
 - Depoimentos/avaliações reais (ver seção "Avaliações do Google" acima).
 - Preço da Aula Dupla (ver seção acima).
+- Confirmar a licença **web** da Avenir (ver "Fonte Avenir" acima).
+
+## Preços: onde cada número aparece
+
+O curso regular custa **R$ 337** (pacote de 2 a 4 aulas) e há **10% OFF
+comprando em dupla**, o que dá R$ 303. Para não parecer contradição:
+
+- A **Home** anuncia "a partir de R$ 303 **em dupla**" (o menor valor possível,
+  com a condição explícita).
+- A página **Cursos** mostra R$ 337 como valor cheio, com o banner do desconto
+  logo acima dos planos.
+
+Ao mexer em um, confira o outro.

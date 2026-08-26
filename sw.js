@@ -10,13 +10,14 @@
  * mais uma camada de staleness em cima disso. Network-first elimina o
  * clássico "publiquei e continuo vendo a versão antiga".
  *
- * A fonte (Google Fonts) e afins cross-origin nunca são interceptadas: passam direto.
+ * A fonte da marca (Avenir) é auto-hospedada e entra no PRECACHE. Requisições
+ * cross-origin (Google Tag Manager, Pixel) nunca são interceptadas: passam direto.
  *
  * Ao publicar uma mudança em qualquer arquivo do PRECACHE, suba a VERSAO —
  * é o gatilho que faz o activate() descartar o cache antigo.
  */
 
-const VERSAO = "v4";
+const VERSAO = "v5";
 const CACHE = `shell-${VERSAO}`;
 
 // As 8 páginas do site — usadas também pelo fallback de navegação offline
@@ -50,6 +51,9 @@ const PRECACHE = [
   "./js/pagina-404.js",
   "./js/consentimento.js",
   "./js/componentes/cabecalho-site.js",
+  "./assets/fontes/avenir-book.woff2",
+  "./assets/fontes/avenir-regular.woff2",
+  "./assets/fontes/avenir-heavy.woff2",
   "./assets/favicon.svg",
   "./assets/logo-preto.png",
   "./assets/logo-branco.png",
@@ -99,7 +103,7 @@ self.addEventListener("fetch", (evento) => {
   if (requisicao.method !== "GET") return;
 
   const url = new URL(requisicao.url);
-  if (url.origin !== self.location.origin) return; // Google Fonts e afins: passam direto
+  if (url.origin !== self.location.origin) return; // GTM, Pixel e afins: passam direto
 
   evento.respondWith(networkFirst(requisicao));
 });
