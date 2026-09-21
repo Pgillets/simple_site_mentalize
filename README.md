@@ -92,6 +92,16 @@ fonte da marca não carregou na hora de gerar.
 A capa **não** entra no `PRECACHE` de `sw.js`: quem a consome são os crawlers das
 redes sociais, não o site.
 
+### Verificação de domínio na Meta
+
+O domínio `mentalizejoias.com.br` é verificado no Business Manager da Meta via
+**meta tag** (`facebook-domain-verification`, no `<head>` das 10 páginas de
+conteúdo — a raiz é a que a Meta confere; as demais entram por robustez). O
+código foi gerado pela gestora de tráfego ao adicionar o domínio em Segurança
+da marca → Domínios (21/09/2026). **Não remover a tag**: a Meta re-verifica
+periodicamente, e domínio verificado é pré-requisito para configurar eventos
+priorizados nas campanhas.
+
 ### Fonte Avenir (auto-hospedada)
 
 A Avenir é a fonte da marca e fica **auto-hospedada** em `assets/fontes/`, em
