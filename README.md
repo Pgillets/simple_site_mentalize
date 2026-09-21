@@ -252,6 +252,11 @@ HTML e regenera `tools/gtm-mentalize.json` — o contêiner pronto para importar
 com a variável `Click - utm_content`, um acionador por slug e uma tag GA4
 `clickwpp_<slug>` por acionador.
 
+O `text=` pré-preenchido dos links usa **só texto simples, sem emoji**: o
+emoji 😊 (4 bytes em UTF-8) aparecia como "�" na página de envio do WhatsApp
+em alguns navegadores (visto em produção, 21/09). Ao editar uma mensagem,
+mantenha apenas caracteres do texto — acentos são seguros.
+
 Para ativar:
 
 1. No GTM da Mentalize: **Administrador → Importar contêiner** →
