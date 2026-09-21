@@ -1,6 +1,6 @@
 {
   "exportFormatVersion": 2,
-  "exportTime": "2026-09-21 03:07:49",
+  "exportTime": "2026-09-21 04:08:59",
   "containerVersion": {
     "path": "accounts/0/containers/0/versions/0",
     "accountId": "0",
@@ -78,6 +78,18 @@
             "type": "TEMPLATE",
             "key": "value",
             "value": "1263186065151365"
+          }
+        ]
+      },
+      {
+        "variableId": "4",
+        "name": "Google Ads - ID da conta",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "AW-18395375130"
           }
         ]
       }
@@ -1224,6 +1236,43 @@
             "type": "TEMPLATE",
             "key": "tagId",
             "value": "{{GA4 - ID de métricas}}"
+          }
+        ],
+        "firingTriggerId": [
+          "10"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "tagId": "98",
+        "name": "00 - [GT] Google Ads - AW-18395375130",
+        "type": "googtag",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "tagId",
+            "value": "{{Google Ads - ID da conta}}"
+          }
+        ],
+        "firingTriggerId": [
+          "10"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "tagId": "99",
+        "name": "00 - [Google Ads] Vinculador de conversões",
+        "type": "gclidw",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "enableCrossDomain",
+            "value": "false"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableUrlPassthrough",
+            "value": "false"
           }
         ],
         "firingTriggerId": [
