@@ -247,18 +247,23 @@ Para ativar:
 1. No GTM da Mentalize: **Administrador → Importar contêiner** →
    `tools/gtm-mentalize.json` → workspace existente → **Mesclar** (conflitos:
    sobrescrever). Nada é publicado nesse passo.
-2. Troque o valor da variável constante **"GA4 - ID de métricas"**
-   (`G-SUBSTITUA`) pelo ID real da propriedade GA4 — um lugar só.
+2. Os IDs reais já vêm embutidos como variáveis constantes: **GA4**
+   `G-T8PV0H218F` ("GA4 - ID de métricas") e **Pixel da Meta**
+   `1263186065151365` ("Meta - Pixel ID"). Para trocar qualquer um, é um lugar
+   só — no painel ou em `tools/gerar-gtm.py`.
 3. O **Container ID** da Mentalize (`GTM-T3WMTLJ7`) já está na constante
    `GTM_CONTAINER_ID` no topo de `js/consentimento.js` — o único lugar do
    código que precisou ser editado. **O snippet oficial do painel não foi (e
    não deve ser) colado nas páginas**: o carregamento do GTM passa pelo gate
    de consentimento, e o `<noscript><iframe>` oficial é omitido de propósito
    porque dispararia sem chance de checar o consentimento.
-4. **Manuais no painel**, seguindo o padrão numerado: as tags `01` de
-   conversão do Google Ads (dependem das conversões criadas no Ads, uma por
-   acionador `[Lead]`) e o **Pixel da Meta** (template "Facebook Pixel" da
-   galeria do GTM, acionador All Pages + os `[Lead]` como eventos).
+4. O **Pixel da Meta já vem no contêiner** como HTML personalizado: código
+   base (init + PageView) na inicialização e uma tag `01 - [Meta] Lead` que
+   dispara em todos os acionadores `[Lead]`, com o slug do botão em
+   `content_name`. Sem o `<noscript><img>` oficial — mesma razão do gate de
+   consentimento. **Manual no painel** fica só o Google Ads: as tags `01` de
+   conversão (dependem das conversões criadas na conta do Ads, uma por
+   acionador `[Lead]`).
 5. Teste no **modo de visualização** do GTM (o site só carrega o GTM depois do
    "Aceitar" na faixa de cookies — aceite antes de testar) e **publique**.
 
@@ -279,7 +284,11 @@ depende de nenhum outro arquivo.
 
 ## Avaliações do Google
 
-Ainda não temos o link do perfil da Mentalize no Google Meu Negócio/Maps, então
+**Adiado por decisão (21/09):** as avaliações reais ficam de fora por
+enquanto; os placeholders discretos "em breve" continuam no ar. Quando for a
+hora, o caminho segue o descrito abaixo.
+
+Ainda não publicamos avaliações no site, então
 os blocos "O que dizem os casais/as equipes/quem já presenteou"
 (`aliancas.html`, `empresas.html`, `presente.html`) usam o mesmo placeholder
 discreto "em breve" já usado para depoimentos. Quando o link existir, dá pra:

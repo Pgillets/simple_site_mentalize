@@ -1,6 +1,6 @@
 {
   "exportFormatVersion": 2,
-  "exportTime": "2026-09-21 02:50:18",
+  "exportTime": "2026-09-21 03:07:49",
   "containerVersion": {
     "path": "accounts/0/containers/0/versions/0",
     "accountId": "0",
@@ -65,7 +65,19 @@
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": "G-SUBSTITUA"
+            "value": "G-T8PV0H218F"
+          }
+        ]
+      },
+      {
+        "variableId": "3",
+        "name": "Meta - Pixel ID",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "1263186065151365"
           }
         ]
       }
@@ -1740,6 +1752,72 @@
           }
         ],
         "firingTriggerId": [
+          "35"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "tagId": "200",
+        "name": "00 - [Meta] Pixel - Código base",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};\nif(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\nn.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];\ns.parentNode.insertBefore(t,s)}(window,document,'script',\n'https://connect.facebook.net/en_US/fbevents.js');\nfbq('init', '{{Meta - Pixel ID}}');\nfbq('track', 'PageView');\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "firingTriggerId": [
+          "10"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "tagId": "201",
+        "name": "01 - [Meta] Lead - Botão WPP (todos os acionadores)",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\nif (window.fbq) {\n  fbq('track', 'Lead', {content_name: '{{Click - utm_content}}'});\n}\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "firingTriggerId": [
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
           "35"
         ],
         "tagFiringOption": "ONCE_PER_EVENT"

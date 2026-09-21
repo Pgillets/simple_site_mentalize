@@ -11,15 +11,19 @@ o contêiner gerado nunca dessincroniza do que está publicado.
 
 O que o JSON contém, no padrão dela:
   - variável "Click - utm_content" (URL do clique → componente consulta)
-  - variável constante "GA4 - ID de métricas" (trocar o placeholder G-SUBSTITUA)
+  - constantes "GA4 - ID de métricas" (G-T8PV0H218F) e "Meta - Pixel ID"
+    (1263186065151365) — para trocar um ID, é um lugar só
   - um acionador "[Lead] Botão WPP - ..." por slug (Apenas links,
     Click URL contém wa.me + Click - utm_content contém <slug>)
   - tag "00 - [GT] GA4" (Tag do Google, acionador Initialization)
+  - tag "00 - [Meta] Pixel - Código base" (HTML: fbq init + PageView, sem o
+    <noscript> — mesma razão do gate de consentimento do site)
+  - tag "01 - [Meta] Lead - Botão WPP" (fbq Lead com o slug em content_name),
+    disparada por TODOS os acionadores [Lead]
   - uma tag "02 - [GA4] Evento - ... - clickwpp_<slug>" por acionador
 
 O que fica manual no painel (documentado no README):
   - tags 01 de conversão do Google Ads (dependem das conversões criadas no Ads)
-  - Pixel da Meta (template da galeria do GTM)
   - publicar o contêiner
 
 Uso:
@@ -98,7 +102,13 @@ def main():
             "variableId": "2",
             "name": "GA4 - ID de métricas",
             "type": "c",
-            "parameter": [{"type": "TEMPLATE", "key": "value", "value": "G-SUBSTITUA"}],
+            "parameter": [{"type": "TEMPLATE", "key": "value", "value": "G-T8PV0H218F"}],
+        },
+        {
+            "variableId": "3",
+            "name": "Meta - Pixel ID",
+            "type": "c",
+            "parameter": [{"type": "TEMPLATE", "key": "value", "value": "1263186065151365"}],
         },
     ]
 
@@ -167,6 +177,59 @@ def main():
                 "tagFiringOption": "ONCE_PER_EVENT",
             }
         )
+
+    ids_leads = [str(11 + i) for i in range(len(slugs))]
+
+    # Pixel da Meta como HTML personalizado: 100%% importável, sem depender de
+    # baixar template da galeria na importação. Sem o <noscript><img> oficial,
+    # pela mesma razão do GTM: dispararia sem checar consentimento.
+    base_pixel = (
+        "<script>\n"
+        "!function(f,b,e,v,n,t,s)\n"
+        "{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\n"
+        "n.callMethod.apply(n,arguments):n.queue.push(arguments)};\n"
+        "if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\n"
+        "n.queue=[];t=b.createElement(e);t.async=!0;\n"
+        "t.src=v;s=b.getElementsByTagName(e)[0];\n"
+        "s.parentNode.insertBefore(t,s)}(window,document,'script',\n"
+        "'https://connect.facebook.net/en_US/fbevents.js');\n"
+        "fbq('init', '{{Meta - Pixel ID}}');\n"
+        "fbq('track', 'PageView');\n"
+        "</script>"
+    )
+    tags.append(
+        {
+            "tagId": "200",
+            "name": "00 - [Meta] Pixel - Código base",
+            "type": "html",
+            "parameter": [
+                {"type": "TEMPLATE", "key": "html", "value": base_pixel},
+                {"type": "BOOLEAN", "key": "supportDocumentWrite", "value": "false"},
+            ],
+            "firingTriggerId": ["10"],
+            "tagFiringOption": "ONCE_PER_EVENT",
+        }
+    )
+    lead_pixel = (
+        "<script>\n"
+        "if (window.fbq) {\n"
+        "  fbq('track', 'Lead', {content_name: '{{Click - utm_content}}'});\n"
+        "}\n"
+        "</script>"
+    )
+    tags.append(
+        {
+            "tagId": "201",
+            "name": "01 - [Meta] Lead - Botão WPP (todos os acionadores)",
+            "type": "html",
+            "parameter": [
+                {"type": "TEMPLATE", "key": "html", "value": lead_pixel},
+                {"type": "BOOLEAN", "key": "supportDocumentWrite", "value": "false"},
+            ],
+            "firingTriggerId": ids_leads,
+            "tagFiringOption": "ONCE_PER_EVENT",
+        }
+    )
 
     contêiner = {
         "exportFormatVersion": 2,
