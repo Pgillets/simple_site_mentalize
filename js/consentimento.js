@@ -14,8 +14,8 @@
  * compensa o risco de rastrear sem consentimento.
  */
 
-// EDITE AQUI quando tiver o container do Google Tag Manager (formato GTM-XXXXXXX).
-const GTM_CONTAINER_ID = "GTM-XXXXXXX";
+// Container oficial da Mentalize Joias no Google Tag Manager.
+const GTM_CONTAINER_ID = "GTM-T3WMTLJ7";
 
 const CHAVE = "consentimento-cookies";
 
