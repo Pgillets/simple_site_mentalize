@@ -270,10 +270,15 @@ Para ativar:
 O clique em "Aceitar" carrega o container `GTM-T3WMTLJ7`. O que ele dispara a
 partir daí é definido no painel do GTM — ver os passos acima.
 
-A CSP de cada página já libera os domínios necessários do Google
-(`googletagmanager.com`, `google-analytics.com`) e da Meta
-(`connect.facebook.net`, `facebook.com`) para scripts, chamadas de rede e o
-pixel de imagem de fallback.
+A CSP de cada página libera, em lista fechada, os domínios que o Google tag e
+o Pixel realmente usam — ajustada em 21/09 com base nos bloqueios reais vistos
+no depurador do GTM: os beacons de diagnóstico do próprio GTM (`/td`, `/a` em
+`img-src`), a medição de conversão do vínculo GA4↔Ads (`google.com/ccm/collect`
+e `ad.doubleclick.net` em `connect-src`) e, já antecipando as tags de conversão
+e remarketing do Google Ads, `googleads.g.doubleclick.net`,
+`www.googleadservices.com`, `google.com.br` e `td.doubleclick.net`
+(`frame-src`). GA4 regional (`region1.google-analytics.com`) coberto por
+curinga de subdomínio. O 404 mantém a CSP estrita, sem rastreamento.
 
 ## Banner promocional (10% OFF em dupla)
 
