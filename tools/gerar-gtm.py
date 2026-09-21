@@ -15,7 +15,10 @@ O que o JSON contém, no padrão dela:
     (1263186065151365) — para trocar um ID, é um lugar só
   - um acionador "[Lead] Botão WPP - ..." por slug (Apenas links,
     Click URL contém wa.me + Click - utm_content contém <slug>)
-  - tag "00 - [GT] GA4" (Tag do Google, acionador Initialization)
+  - tag "00 - [GT] GA4" e tag "00 - [GT] Google Ads - AW-18395375130"
+    (Tags do Google, acionador Initialization)
+  - tag "00 - [Google Ads] Vinculador de conversões" (preserva o gclid dos
+    cliques vindos de anúncios — sem ela, conversão futura atribui mal)
   - tag "00 - [Meta] Pixel - Código base" (HTML: fbq init + PageView, sem o
     <noscript> — mesma razão do gate de consentimento do site)
   - tag "01 - [Meta] Lead - Botão WPP" (fbq Lead com o slug em content_name),
@@ -110,6 +113,12 @@ def main():
             "type": "c",
             "parameter": [{"type": "TEMPLATE", "key": "value", "value": "1263186065151365"}],
         },
+        {
+            "variableId": "4",
+            "name": "Google Ads - ID da conta",
+            "type": "c",
+            "parameter": [{"type": "TEMPLATE", "key": "value", "value": "AW-18395375130"}],
+        },
     ]
 
     # acionador de inicialização próprio (equivalente ao builtin "Initialization
@@ -127,7 +136,28 @@ def main():
             ],
             "firingTriggerId": ["10"],
             "tagFiringOption": "ONCE_PER_EVENT",
-        }
+        },
+        {
+            "tagId": "98",
+            "name": "00 - [GT] Google Ads - AW-18395375130",
+            "type": "googtag",
+            "parameter": [
+                {"type": "TEMPLATE", "key": "tagId", "value": "{{Google Ads - ID da conta}}"}
+            ],
+            "firingTriggerId": ["10"],
+            "tagFiringOption": "ONCE_PER_EVENT",
+        },
+        {
+            "tagId": "99",
+            "name": "00 - [Google Ads] Vinculador de conversões",
+            "type": "gclidw",
+            "parameter": [
+                {"type": "BOOLEAN", "key": "enableCrossDomain", "value": "false"},
+                {"type": "BOOLEAN", "key": "enableUrlPassthrough", "value": "false"},
+            ],
+            "firingTriggerId": ["10"],
+            "tagFiringOption": "ONCE_PER_EVENT",
+        },
     ]
 
     for indice, slug in enumerate(slugs):
