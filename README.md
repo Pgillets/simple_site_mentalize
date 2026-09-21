@@ -226,21 +226,44 @@ O site já vem preparado para rastreamento via **Google Tag Manager (GTM)**,
 mas nada carrega até o visitante aceitar a faixa de cookies (`js/consentimento.js`) —
 ver `privacidade.html` para o texto mostrado a ele.
 
+### Rastreamento por botão (padrão da gestora de tráfego)
+
+Cada link de WhatsApp do site carrega um **`utm_content` único**
+(ex.: `wa.me/…?utm_content=cursos_experimentar`). O WhatsApp ignora o
+parâmetro; o GTM lê a URL clicada e sabe exatamente qual botão gerou o lead —
+o mesmo padrão do contêiner de referência da gestora (acionadores
+`[Lead] Botão WPP - <Página> - <Seção>` com `Click URL contém wa.me` +
+`Click - utm_content contém <slug>`, e tags numeradas `00`/`01`/`02`).
+
+São **25 slugs** no formato `<pagina>_<secao>` (o rodapé usa `rodape` único —
+a página de origem já vem no `page_path` do GA4). Ao criar um botão novo,
+inclua um `utm_content` novo e rode `python3 tools/gerar-gtm.py`, que varre os
+HTML e regenera `tools/gtm-mentalize.json` — o contêiner pronto para importar,
+com a variável `Click - utm_content`, um acionador por slug e uma tag GA4
+`clickwpp_<slug>` por acionador.
+
 Para ativar:
 
-1. Crie uma conta no [Google Tag Manager](https://tagmanager.google.com/) e
-   pegue o **Container ID** (formato `GTM-XXXXXXX`).
-2. Cole esse ID na constante `GTM_CONTAINER_ID`, no topo de `js/consentimento.js`
-   — é o único lugar do código que precisa ser editado.
-3. **O Pixel da Meta, o Google Analytics (GA4), o Google Ads e qualquer outra
-   tag são configurados depois, dentro do próprio painel do GTM** (Meta tem um
-   template oficial de "Facebook Pixel" na galeria de templates do GTM) —
-   não é necessário editar o site de novo para isso.
-4. Publique o container no GTM.
+1. No GTM da Mentalize: **Administrador → Importar contêiner** →
+   `tools/gtm-mentalize.json` → workspace existente → **Mesclar** (conflitos:
+   sobrescrever). Nada é publicado nesse passo.
+2. Troque o valor da variável constante **"GA4 - ID de métricas"**
+   (`G-SUBSTITUA`) pelo ID real da propriedade GA4 — um lugar só.
+3. O **Container ID** da Mentalize (`GTM-T3WMTLJ7`) já está na constante
+   `GTM_CONTAINER_ID` no topo de `js/consentimento.js` — o único lugar do
+   código que precisou ser editado. **O snippet oficial do painel não foi (e
+   não deve ser) colado nas páginas**: o carregamento do GTM passa pelo gate
+   de consentimento, e o `<noscript><iframe>` oficial é omitido de propósito
+   porque dispararia sem chance de checar o consentimento.
+4. **Manuais no painel**, seguindo o padrão numerado: as tags `01` de
+   conversão do Google Ads (dependem das conversões criadas no Ads, uma por
+   acionador `[Lead]`) e o **Pixel da Meta** (template "Facebook Pixel" da
+   galeria do GTM, acionador All Pages + os `[Lead]` como eventos).
+5. Teste no **modo de visualização** do GTM (o site só carrega o GTM depois do
+   "Aceitar" na faixa de cookies — aceite antes de testar) e **publique**.
 
-Enquanto `GTM_CONTAINER_ID` estiver com o valor de exemplo (`GTM-XXXXXXX`), o
-clique em "Aceitar" tenta carregar um container inexistente — falha em
-silêncio, sem quebrar a página, só não envia dados de verdade.
+O clique em "Aceitar" carrega o container `GTM-T3WMTLJ7`. O que ele dispara a
+partir daí é definido no painel do GTM — ver os passos acima.
 
 A CSP de cada página já libera os domínios necessários do Google
 (`googletagmanager.com`, `google-analytics.com`) e da Meta
@@ -286,8 +309,6 @@ pendência: com pedra, metal e fundição à parte, o total varia por projeto.
 - Fotos reais para a galeria, o hero, as alianças, a equipe e as demais
   páginas (hoje há 29 placeholders "em breve").
 - Depoimentos/avaliações reais (ver seção "Avaliações do Google" acima).
-- **Container do Google Tag Manager** — `GTM_CONTAINER_ID` em
-  `js/consentimento.js` segue no valor de exemplo (ver seção "Analytics" acima).
 
 Decisões já fechadas, que **não** são pendência: no **Workshop de Anéis e
 Alianças a peça é só anel ou alianças** (confirmado pela cliente em 26/08 —
